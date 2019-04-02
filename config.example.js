@@ -1,3 +1,5 @@
+// We (Juno) do not support self-hosting, this project is open-sourced purely for learning purposes.
+// We do however provided a hosted version which will be public very soon!
 module.exports = {
   admins: [
     189850839660101632,
@@ -6,8 +8,12 @@ module.exports = {
     401792058970603539,
     251788826232619008
   ],
-  token: '',
   prefix: 'a.',
-  supportServer: 'https://discord.gg/53jCeTX',
-  version: require('./package.json').version
+  reactions: {
+    success: '✅',
+    error: '❌',
+    warning: '⚠️'
+  },
+  footer: `${message.author.username}#${message.author.discriminator} | ❤ JunoDevs`,
+  thumbColor: `#686de0`
 }

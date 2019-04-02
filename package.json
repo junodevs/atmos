@@ -21,6 +21,7 @@
     "standard": "^12.0.1"
   },
   "dependencies": {
-    "enmap": "^4.8.2"
+    "enmap": "^4.8.2",
+    "mysql": "^2.16.0"
   }
 }
