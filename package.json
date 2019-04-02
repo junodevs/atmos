@@ -18,5 +18,8 @@
   "homepage": "https://github.com/junodevs/atmos#readme",
   "devDependencies": {
     "standard": "^12.0.1"
+  },
+  "dependencies": {
+    "enmap": "^4.8.2"
   }
 }
