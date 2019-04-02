@@ -11,6 +11,8 @@
 
 ## Current features
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/junodevs/atmos.svg)](https://greenkeeper.io/)
+
 * 📎 Advanced embed sender
 * ⭐ Starboard
 * 🔨 Powerful moderation
