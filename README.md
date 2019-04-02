@@ -1,17 +1,14 @@
-<div align="center">
-    <img src="https://userfiles.uptimerobot.com/img/567954-1532058998.png" alt="Atmos Banner"><br>
-    <a href="LICENSE"><img src="https://img.shields.io/github/license/324Luke/TOTALLY-NOT-A-ROBOT.svg" alt="License"></a>
-    <a href="https://discord.gg"><img src="https://img.shields.io/discord/528810369607663621.svg?color=%237289DA&logo=join" alt="Join Discord"></a>
-    <a href="https://travis-ci.org/junodevs/atmos"><img src="https://api.travis-ci.org/junodevs/atmos.svg?branch=master" alt="Travis CI"></a><br>
-    A WIP multi-purpose discord bot written in Javascript for moderation, administration, and fun!<br><br>
-</div>
+# Atmos
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/junodevs/atmos.svg)](https://greenkeeper.io/)
+[![License](https://img.shields.io/github/license/junodevs/atmos.svg)](LICENSE)
+[![Discord](https://img.shields.io/discord/562437899707219978.svg?color=%237289DA&logo=join)](https://discord.gg/53jCeTX)
+[![Travis CI](https://api.travis-ci.org/junodevs/atmos.svg?branch=master)](https://travis-ci.org/junodevs/atmos)
 
 * **Need Support?** Join the [discord](https://discord.gg)
 * **See new features** View our [trello](https://trello.com)
 
 ## Current features
-
-[![Greenkeeper badge](https://badges.greenkeeper.io/junodevs/atmos.svg)](https://greenkeeper.io/)
 
 * 📎 Advanced embed sender
 * ⭐ Starboard
