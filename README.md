@@ -1,5 +1,3 @@
-#
-
 <div align="center">
     <img src="https://userfiles.uptimerobot.com/img/567954-1532058998.png" alt="Atmos Banner"><br>
     <a href="LICENSE"><img src="https://img.shields.io/github/license/324Luke/TOTALLY-NOT-A-ROBOT.svg" alt="License"></a>
@@ -10,7 +8,6 @@
 
 * **Need Support?** Join the [discord](https://discord.gg)
 * **See new features** View our [trello](https://trello.com)
-* **3rd Option**
 
 ## Current features
 

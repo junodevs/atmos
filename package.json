@@ -1,0 +1,22 @@
+{
+  "name": "atmos-bot",
+  "version": "0.0.1",
+  "description": "A multi-purpose discord bot written in JavaScript by Juno",
+  "main": "src/bot.js",
+  "scripts": {
+    "start": "standard && nodemon ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/junodevs/atmos.git"
+  },
+  "author": "Juno <https://lukewhrit.xyz> (Luke#1000 <https://lukewhrit.xyz>, BluLightShow#0001 <https://blulightshow.space>)",
+  "license": "AGPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/junodevs/atmos/issues"
+  },
+  "homepage": "https://github.com/junodevs/atmos#readme",
+  "devDependencies": {
+    "standard": "^12.0.1"
+  }
+}
