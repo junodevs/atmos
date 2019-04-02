@@ -4,7 +4,8 @@
   "description": "A multi-purpose discord bot written in JavaScript by Juno",
   "main": "src/bot.js",
   "scripts": {
-    "start": "standard && nodemon ."
+    "start": "standard && nodemon src/bot.js",
+    "test": "standard"
   },
   "repository": {
     "type": "git",
@@ -15,7 +16,7 @@
   "bugs": {
     "url": "https://github.com/junodevs/atmos/issues"
   },
-  "homepage": "https://github.com/junodevs/atmos#readme",
+  "homepage": "https://atmosbot.com",
   "devDependencies": {
     "standard": "^12.0.1"
   }
