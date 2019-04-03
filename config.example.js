@@ -14,6 +14,6 @@ module.exports = {
     error: '❌',
     warning: '⚠️'
   },
-  footer: `${message.author.username}#${message.author.discriminator} | ❤ JunoDevs`,
+  footer: `Author#0000 | ❤ JunoDevs`,
   thumbColor: `#686de0`
 }
