@@ -4,7 +4,7 @@ const { dbPromise } = require('../utils/database.js')
 
 module.exports = (message) => {
   if (message.author.bot) return
-  var embed = new bot.Discord.RichEmbed()
+  const embed = new bot.Discord.RichEmbed()
 
   if (message.channel.type === 'dm') {
     // TODO: ModMail features execute here
@@ -18,10 +18,10 @@ module.exports = (message) => {
 
     dbPromise(sqlcheck).then((result) => {
       if (result !== [] || !result[0] !== undefined) {
-        var prefixobject = result[0]
-        var prefixresult = prefixobject['Prefix']
+        var prefixObject = result[0]
+        var prefixResult = prefixObject['Prefix']
 
-        cache.setPrefixCache(message.guild.id, prefixresult)
+        cache.setPrefixCache(message.guild.id, prefixResult)
         prefix = cache.getPrefixCache(message.guild.id)
         commandRun() // Prefix checking done; Commands can be ran
       }
@@ -29,7 +29,7 @@ module.exports = (message) => {
       if (!bot.dbErrorThrown) {
         bot.client.user.setPresence({
           game: {
-            name: "DB Error! | We're already on it!"
+            name: `DB Error! | We're already on it!`
           },
           status: 'dnd'
         })
@@ -37,14 +37,13 @@ module.exports = (message) => {
         embed.setTitle('DB Connection Error')
         embed.setDescription('There was an error connecting and/or querying the database, look into this immediately!')
         embed.setColor(bot.config.thumbColor)
-        embed.setFooter("Chief we've got a problem")
+        embed.setFooter(`Chief we've got a problem`)
         embed.setTimestamp(new Date())
         embed.setThumbnail(bot.config.thumbImg)
-        // error message
-        embed.addField('`' + err + '`')
+        // Error message
+        embed.addField('```' + err + '```')
 
-        bot.client.guilds.get('561768427757240330').channels.get('563495099896430612').send(embed)
-        bot.client.guilds.get('561768427757240330').channels.get('563495099896430612').send('<@&563495674432192513>')
+        bot.client.guilds.get('561768427757240330').channels.get('563495099896430612').send({ message: '<@&563495674432192513>', embed: embed })
       }
       bot.dbErrorThrown = true
       console.error(err)
@@ -55,8 +54,8 @@ module.exports = (message) => {
   }
 
   // Function is required because MySQL is asynchronous and I'm too lazy to actually do it the right way
-  function commandRun() {
-    // HANDLE MESSAGE NOW THAT WE HAVE PREFIX
+  function commandRun () {
+    // Handle message
 
     if (message.content.indexOf(prefix || bot.config.defaultprefix) !== 0) return // The Magical Line (AKA don't fuck with it)
 
@@ -87,7 +86,7 @@ module.exports = (message) => {
       embed.addField(`Use External Emojis: ${externalEmojis}`)
       embed.addField(`Add Reactions: ${addReactions}`)
 
-      // Well I mean if we can't send messages we gotta DM 'em
+      // Send a DM to message author if we can't send messages
       if (message.author.dmChannel === null) {
         message.author.createDM().then(channel => {
           channel.send(embed)
@@ -96,7 +95,7 @@ module.exports = (message) => {
         message.author.dmChannel.send(embed)
       }
 
-      return // Very important or else we die
+      return '' // Very important or else we die
     }
   }
 }
