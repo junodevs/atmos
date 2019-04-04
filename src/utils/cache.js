@@ -14,6 +14,5 @@ function getPrefixCache (key) {
 
 module.exports = {
   setPrefixCache: setPrefixCache,
-  getPrefixCache,
   getPrefixCache
 }
