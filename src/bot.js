@@ -7,6 +7,8 @@ const path = require('path')
 const { version } = require('../package.json')
 const config = require('../config.js')
 
+const dbErrorThrown = false
+
 const db = mysql.createPool({
   connectionLimit: 1,
   host: '0.0.0.0', // TODO: LUKE
@@ -20,7 +22,8 @@ module.exports = {
   Discord: Discord,
   client: client,
   db: db,
-  reactions: config.reactions
+  config: config,
+  dbErrorThrown: dbErrorThrown
 }
 
 console.log('[Start Events Load]')
