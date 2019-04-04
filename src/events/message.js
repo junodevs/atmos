@@ -1,6 +1,6 @@
-var bot = require('../bot.js');
-const cache = require('../utils/cache.js');
-const { dbPromise } = require('../utils/database.js');
+var bot = require('../bot.js')
+const cache = require('../utils/cache.js')
+const { dbPromise } = require('../utils/database.js')
 
 module.exports = (client, mesage) => {
     if (message.author.bot) return
@@ -12,6 +12,7 @@ module.exports = (client, mesage) => {
 
     var prefix;
     // BEGIN SHITSTORM OF CUSTOM PREFIXES
+    // For the prefixes and all settings use a database, and have the website connect to the db and have people sign into Discord.
     if (!cache.getPrefixCache(message.guild.id)) {
         // This where we get prefix from db and put to cache
     } else {
