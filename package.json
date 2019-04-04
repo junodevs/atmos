@@ -4,7 +4,6 @@
   "description": "A multi-purpose discord bot written in JavaScript by Juno",
   "main": "src/bot.js",
   "scripts": {
-    "start": "standard && nodemon src/bot.js",
     "start": "standard && nodemon .",
     "test": "standard"
   },
