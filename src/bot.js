@@ -4,9 +4,7 @@ const Enmap = require('enmap')
 const mysql = require('mysql')
 const client = new Discord.Client()
 const path = require('path')
-const {
-  version
-} = require('../package.json')
+const { version } = require('../package.json')
 const config = require('../config.js')
 
 const db = mysql.createPool({
@@ -27,12 +25,12 @@ module.exports = {
 
 console.log('[Start Events Load]')
 
-fs.readdir('./src/events/', (err, files) => {
+fs.readdir('./events/', (err, files) => {
   if (err) return console.error(new Error(err))
   files.forEach(file => {
     if (!file.endsWith('.js')) return
 
-    const event = require(path.join(__dirname, `/src/events/${file}`))
+    const event = require(path.join(`/events/${file}`))
 
     let eventName = file.split('.')[0]
     // let embed = new Discord.RichEmbed()
@@ -74,8 +72,7 @@ client.on('ready', () => {
 })
 
 if (process.env.BOT_TOKEN === undefined) {
-  //client.login(process.env.TESTER_TOKEN)
-  client.login('NDQ3ODM4Mzg4OTQzNDU0MjA5.XKUngg.yeZ2orwDtNDt58jWvw1Zq_aWU28')
+  client.login(process.env.TESTER_TOKEN)
 } else {
   client.login(process.env.BOT_TOKEN)
 }
