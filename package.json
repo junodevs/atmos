@@ -18,7 +18,8 @@
   },
   "homepage": "https://atmosbot.com",
   "devDependencies": {
-    "standard": "^12.0.1"
+    "standard": "^12.0.1",
+    "nodemon": "^1.18.10"
   },
   "dependencies": {
     "discord.js": "^11.4.2",
