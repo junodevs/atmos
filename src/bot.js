@@ -76,3 +76,7 @@ if (process.env.BOT_TOKEN === undefined) {
 } else {
   client.login(process.env.BOT_TOKEN)
 }
+
+if (process.env.TESTER_ENV) {
+  process.exit(0) // Exit as success if on test env like Travis, we don't need to run the bot for an hour
+}
