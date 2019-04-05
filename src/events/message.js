@@ -59,7 +59,7 @@ module.exports = (client, message) => {
   }
 
   // Function is required because MySQL is asynchronous and I'm too lazy to actually do it the right way
-  function commandRun() {
+  function commandRun () {
     // Handle message
 
     if (message.content.indexOf(prefix || bot.config.defaultprefix) !== 0) return // The Magical Line (AKA don't fuck with it)
