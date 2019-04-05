@@ -8,6 +8,7 @@ module.exports = (client, message) => {
 
   if (message.channel.type === 'dm') {
     // TODO: ModMail features execute here
+    // Will at first require dialogue request which server you are trying to reach (if the user is in multiple servers w/ atmos)
   }
 
   var prefix

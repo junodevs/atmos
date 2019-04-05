@@ -6,15 +6,15 @@ const client = new Discord.Client()
 const { version } = require('../package.json')
 const config = require('../config.js')
 
-const dbErrorThrown = false
+const dbErrorThrown = false // Only run DB error protocol once
 
-const db = mysql.createPool({
+const db = mysql.createPool({ // IP needs to be whitelisted to connect as a security measure
   connectionLimit: 1,
-  host: '0.0.0.0', // TODO: LUKE
+  host: 'blulightshow.space',
   port: 3306,
-  user: '',
-  password: '',
-  database: ''
+  user: 'envision_atmos',
+  password: process.env.DB_PASS,
+  database: 'envision_atmos_main'
 })
 
 module.exports = {
