@@ -106,7 +106,7 @@ module.exports = (client, message) => {
     const thumbColor = bot.config.thumbColor
 
     const cmd = client.commands.get(command)
-    if(!cmd) return
+    if (!cmd) return
 
     cmd.run(client, message, args, embed, thumbImg, reactions, thumbColor)
   }

@@ -3,7 +3,6 @@ const fs = require('fs')
 const Enmap = require('enmap')
 const mysql = require('mysql')
 const client = new Discord.Client()
-const path = require('path')
 const { version } = require('../package.json')
 const config = require('../config.js')
 
@@ -32,7 +31,7 @@ fs.readdir('./src/events/', (err, files) => {
   if (err) return console.error(new Error(err))
   files.forEach(file => {
     if (!file.endsWith('.js')) return
-    
+
     const event = require(`./events/${file}`)
 
     let eventName = file.split('.')[0]
