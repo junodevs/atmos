@@ -73,7 +73,6 @@ client.on('ready', () => {
   if (process.env.TESTER_ENV) {
     process.exit(0) // Exit as success if on test env like Travis, we don't need to run the bot for an hour
   }
-  
 })
 
 if (process.env.BOT_TOKEN === undefined) {
