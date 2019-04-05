@@ -69,14 +69,15 @@ client.on('ready', () => {
 
     status: 'online'
   })
+
+  if (process.env.TESTER_ENV) {
+    process.exit(0) // Exit as success if on test env like Travis, we don't need to run the bot for an hour
+  }
+  
 })
 
 if (process.env.BOT_TOKEN === undefined) {
   client.login(process.env.TESTER_TOKEN)
 } else {
   client.login(process.env.BOT_TOKEN)
-}
-
-if (process.env.TESTER_ENV) {
-  process.exit(0) // Exit as success if on test env like Travis, we don't need to run the bot for an hour
 }
