@@ -2,7 +2,7 @@ const cache = require('../utils/cache.js')
 const { dbPromise } = require('../utils/database.js')
 const bot = require('../bot')
 
-exports.run = (client, message, args, embed, thumbImg, reactions, thumbColor) => {
+exports.run = (client, message, args, embed, thumbImg, reactions, embedColors) => {
   var sqlselect = `SELECT ServerID FROM config_prefix WHERE ServerID=${message.guild.id}`
   var sqlinsert = `INSERT INTO config_prefix (ServerID, Prefix) VALUES (${message.guild.id}, '${args[0]}')`
   var sqlupdate = `UPDATE config_prefix SET Prefix='${args[0]}' WHERE ServerID=${message.guild.id}`
@@ -19,7 +19,7 @@ exports.run = (client, message, args, embed, thumbImg, reactions, thumbColor) =>
         cache.setPrefixCache(message.guild.id, args[0])
         embed.setTitle('Prefix Change Successful')
         embed.setDescription(`Prefix changed to: **'${args[0]}'**`)
-        embed.setColor(thumbColor)
+        embed.setColor(embedColors.success)
         embed.setFooter(`${message.author.username + '#' + message.author.discriminator} | ❤ JunoDevs`)
         embed.setTimestamp(new Date())
         embed.setThumbnail(thumbImg)
@@ -31,7 +31,7 @@ exports.run = (client, message, args, embed, thumbImg, reactions, thumbColor) =>
         console.log(err)
         embed.setTitle('Prefix Change Failed')
         embed.setDescription('A database error occurred. Please try again later.')
-        embed.setColor(thumbColor)
+        embed.setColor(embedColors.error)
         embed.setFooter(`${message.author.username + '#' + message.author.discriminator} | ❤ JunoDevs`)
         embed.setTimestamp(new Date())
         embed.setThumbnail(thumbImg)
@@ -42,7 +42,7 @@ exports.run = (client, message, args, embed, thumbImg, reactions, thumbColor) =>
     } else {
       embed.setTitle('Error')
       embed.setDescription('You must provide the new prefix you wish to use without any spaces!')
-      embed.setColor(thumbColor)
+      embed.setColor(embedColors.error)
       embed.setFooter(`${message.author.username + '#' + message.author.discriminator} | ❤ JunoDevs`)
       embed.setTimestamp(new Date())
       embed.setThumbnail(thumbImg)
@@ -53,7 +53,7 @@ exports.run = (client, message, args, embed, thumbImg, reactions, thumbColor) =>
   } else {
     embed.setTitle('Permission Error')
     embed.setDescription('You must have the MANAGE_SERVER permission to execute this command!')
-    embed.setColor(thumbColor)
+    embed.setColor(embedColors.error)
     embed.setFooter(`${message.author.username + '#' + message.author.discriminator} | ❤ JunoDevs`)
     embed.setTimestamp(new Date())
     embed.setThumbnail(thumbImg)

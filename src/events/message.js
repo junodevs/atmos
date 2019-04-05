@@ -41,12 +41,12 @@ module.exports = (client, message) => {
 
         embed.setTitle('DB Connection Error')
         embed.setDescription('There was an error connecting and/or querying the database, look into this immediately!')
-        embed.setColor(bot.config.thumbColor)
+        embed.setColor(bot.config.colors.error)
         embed.setFooter(`Chief we've got a problem`)
         embed.setTimestamp(new Date())
         embed.setThumbnail(bot.config.thumbImg)
         // Error message
-        embed.addField('```' + err + '```')
+        embed.addField('`' + err + '`')
 
         bot.client.guilds.get('561768427757240330').channels.get('563495099896430612').send('<@&563495674432192513>', { embed: embed })
       }
@@ -68,7 +68,7 @@ module.exports = (client, message) => {
     if (!message.guild.members.get('219119687743569920' && '447838388943454209').hasPermission(['SEND_MESSAGES', 'EMBED_LINKS', 'USE_EXTERNAL_EMOJIS', 'ADD_REACTIONS'], false, true, false)) {
       embed.setTitle('Permission Error')
       embed.setDescription("I don't have the correct global permissions! If you're a normal user, alert a server admin of this error. If you're a server admin, please ensure you have given Atmos the correct permissions, see following:")
-      embed.setColor(bot.config.thumbColor)
+      embed.setColor(bot.config.colors.error)
       embed.setFooter(`${message.author.username + '#' + message.author.discriminator} | ❤ JunoDevs`)
       embed.setTimestamp(new Date())
       embed.setThumbnail(bot.config.thumbImg)
@@ -108,11 +108,11 @@ module.exports = (client, message) => {
     const command = args.shift().toLowerCase()
     const thumbImg = bot.config.thumbImg
     const reactions = bot.config.reactions
-    const thumbColor = bot.config.thumbColor
+    const embedColors = bot.config.colors
 
     const cmd = client.commands.get(command)
     if (!cmd) return
 
-    cmd.run(client, message, args, embed, thumbImg, reactions, thumbColor)
+    cmd.run(client, message, args, embed, thumbImg, reactions, embedColors)
   }
 }

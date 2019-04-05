@@ -12,6 +12,11 @@ module.exports = {
     error: '❌',
     warning: '⚠️'
   },
-  footer: `Author#0000 | ❤ JunoDevs`,
-  thumbColor: `#686de0`
+  colors: {
+    default: '#686de0',
+    error: '#ff4642',
+    warning: '#ffd139',
+    success: '#26cb7c'
+  },
+  footer: `Author#0000 | ❤ JunoDevs`
 }
