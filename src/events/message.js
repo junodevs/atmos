@@ -2,7 +2,7 @@ var bot = require('../bot.js')
 const cache = require('../utils/cache.js')
 const { dbPromise } = require('../utils/database.js')
 
-module.exports = (message) => {
+module.exports = (client, message) => {
   if (message.author.bot) return
   const embed = new bot.Discord.RichEmbed()
 
@@ -97,5 +97,17 @@ module.exports = (message) => {
 
       return '' // Very important or else we die
     }
+
+    // args and commands my guy
+    const args = message.content.slice(prefix.length).trim().split(/ +/g)
+    const command = args.shift().toLowerCase()
+    const thumbImg = bot.config.thumbImg
+    const reactions = bot.config.reactions
+    const thumbColor = bot.config.thumbColor
+
+    const cmd = client.commands.get(command)
+    if(!cmd) return
+
+    cmd.run(client, message, args, embed, thumbImg, reactions, thumbColor)
   }
 }
