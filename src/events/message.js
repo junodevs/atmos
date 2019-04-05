@@ -1,4 +1,4 @@
-var bot = require('../bot.js')
+const bot = require('../bot.js')
 const cache = require('../utils/cache.js')
 const { dbPromise } = require('../utils/database.js')
 
@@ -7,7 +7,6 @@ module.exports = (client, message) => {
   const embed = new bot.Discord.RichEmbed()
 
   if (message.channel.type === 'dm') {
-    // TODO: ModMail features execute here
     // Will at first require dialogue request which server you are trying to reach (if the user is in multiple servers w/ atmos)
   }
 
@@ -44,7 +43,7 @@ module.exports = (client, message) => {
         // Error message
         embed.addField('```' + err + '```')
 
-        bot.client.guilds.get('561768427757240330').channels.get('563495099896430612').send({ message: '<@&563495674432192513>', embed: embed })
+        bot.client.guilds.get('561768427757240330').channels.get('563495099896430612').send('<@&563495674432192513>', { embed: embed })
       }
       bot.dbErrorThrown = true
       console.error(err)
