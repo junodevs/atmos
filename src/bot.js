@@ -28,18 +28,17 @@ module.exports = {
 
 console.log('[Start Events Load]')
 
-fs.readdir('./events/', (err, files) => {
+fs.readdir('./src/events/', (err, files) => {
   if (err) return console.error(new Error(err))
   files.forEach(file => {
     if (!file.endsWith('.js')) return
-
-    const event = require(path.join(`./events/${file}`))
+    
+    const event = require(`./events/${file}`)
 
     let eventName = file.split('.')[0]
-    // let embed = new Discord.RichEmbed()
 
     client.on(eventName, event.bind(null, client))
-    delete require.cache[require.resolve(path.join(`./events/${file}`))]
+    delete require.cache[require.resolve(`./events/${file}`)]
   })
 })
 
@@ -49,11 +48,11 @@ client.commands = new Enmap()
 
 console.log('[Commands Load Start]')
 
-fs.readdir('./commands/', (err, files) => {
+fs.readdir('./src/commands/', (err, files) => {
   if (err) return console.error(err)
   files.forEach(file => {
     if (!file.endsWith('.js')) return
-    let props = require(path.join(`./commands/${file}`))
+    let props = require(`./commands/${file}`)
     let commandName = file.split('.')[0]
     client.commands.set(commandName, props)
   })
@@ -63,7 +62,6 @@ console.log('[Commands Load Complete]')
 
 client.on('ready', () => {
   console.log('[Connected to Discord]')
-  console.log('[Startup should begin soon...]')
   client.user.setPresence({
     game: {
       name: `${client.guilds.size} servers | PRE ${version}`,
