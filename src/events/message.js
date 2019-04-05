@@ -17,7 +17,12 @@ module.exports = (client, message) => {
     var sqlcheck = `SELECT Prefix FROM config_prefix WHERE ServerID=${message.guild.id}`
 
     dbPromise(sqlcheck).then((result) => {
-      if (result !== [] || !result[0] !== undefined) {
+      if (result === [] || result[0] === undefined) {
+        cache.setPrefixCache(message.guild.id, bot.config.prefix)
+        prefix = cache.getPrefixCache(message.guild.id)
+        commandRun()
+      } else {
+        console.log(result)
         var prefixObject = result[0]
         var prefixResult = prefixObject['Prefix']
 
@@ -54,7 +59,7 @@ module.exports = (client, message) => {
   }
 
   // Function is required because MySQL is asynchronous and I'm too lazy to actually do it the right way
-  function commandRun () {
+  function commandRun() {
     // Handle message
 
     if (message.content.indexOf(prefix || bot.config.defaultprefix) !== 0) return // The Magical Line (AKA don't fuck with it)
@@ -64,7 +69,7 @@ module.exports = (client, message) => {
       embed.setTitle('Permission Error')
       embed.setDescription("I don't have the correct global permissions! If you're a normal user, alert a server admin of this error. If you're a server admin, please ensure you have given Atmos the correct permissions, see following:")
       embed.setColor(bot.config.thumbColor)
-      embed.setFooter(`${message.author.username + message.author.discriminator} | ❤ JunoDevs`)
+      embed.setFooter(`${message.author.username + '#' + message.author.discriminator} | ❤ JunoDevs`)
       embed.setTimestamp(new Date())
       embed.setThumbnail(bot.config.thumbImg)
 
