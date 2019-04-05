@@ -5,7 +5,7 @@
   "main": "src/bot.js",
   "scripts": {
     "start": "standard && nodemon .",
-    "test": "standard"
+    "test": "standard && nodemon ."
   },
   "repository": {
     "type": "git",
