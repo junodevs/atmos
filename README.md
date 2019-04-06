@@ -17,12 +17,13 @@ A WIP multi-purpose discord bot written in Javascript by the Juno development te
 * ⭐ Starboard
 * 🔨 Powerful moderation
 * 📱 Custom social system
-* 📁 Role Maniuplation
+* 📁 Role Manipulation
 * 🔢 Member count channels
 * 🌐 Web dashboard
 * 📞 Mod mail
 * 🎨 Reaction Roles
 * ⌚ Reminders
+* 📚 More planned for the future!
 
 ## Contributors
 
