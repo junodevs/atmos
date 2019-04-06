@@ -1,6 +1,6 @@
 const cache = require('../utils/cache.js')
 const { dbPromise } = require('../utils/database.js')
-const bot = require('../bot')
+const bot = require('../bot.js')
 
 exports.run = (client, message, args, embed, thumbImg, reactions, embedColors) => {
   var sqlselect = `SELECT ServerID FROM config_prefix WHERE ServerID=${message.guild.id}`
@@ -23,7 +23,7 @@ exports.run = (client, message, args, embed, thumbImg, reactions, embedColors) =
         embed.setFooter(`${message.author.username + '#' + message.author.discriminator} | ❤ JunoDevs`)
         embed.setTimestamp(new Date())
         embed.setThumbnail(thumbImg)
-        embed.addField(`The original prefix (**${bot.config.prefix}**) will still continue to work for running commands, alongside your custom prefix.`)
+        embed.addField(`The original prefix (**${bot.config.prefix}**) will still continue to work for running commands, alongside your custom prefix.`, 'Retrieve your custom prefix with `' + bot.config.prefix + 'setprefix`')
         message.channel.send(embed)
 
         message.react(reactions.success)

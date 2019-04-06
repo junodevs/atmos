@@ -22,7 +22,6 @@ module.exports = (client, message) => {
         prefix = cache.getPrefixCache(message.guild.id)
         commandRun()
       } else {
-        console.log(result)
         var prefixObject = result[0]
         var prefixResult = prefixObject['Prefix']
 
@@ -46,7 +45,7 @@ module.exports = (client, message) => {
         embed.setTimestamp(new Date())
         embed.setThumbnail(bot.config.thumbImg)
         // Error message
-        embed.addField('`' + err + '`')
+        embed.addField('`' + err + '`', "Above is the error message. It's possible that this is not database related.")
 
         bot.client.guilds.get('561768427757240330').channels.get('563495099896430612').send('<@&563495674432192513>', { embed: embed })
       }
@@ -59,10 +58,21 @@ module.exports = (client, message) => {
   }
 
   // Function is required because MySQL is asynchronous and I'm too lazy to actually do it the right way
-  function commandRun () {
+  function commandRun() {
+    var isCustomPrefix = false
+    var isDefaultPrefix = false
     // Handle message
 
-    if (message.content.indexOf(prefix || bot.config.defaultprefix) !== 0) return // The Magical Line (AKA don't fuck with it)
+    if (message.content.indexOf(bot.config.prefix) === 0) { // The Magical Lines (AKA don't fuck with it)
+      isDefaultPrefix = true
+    }
+    if (message.content.indexOf(prefix) === 0) {
+      isCustomPrefix = true
+    }
+
+    if (isCustomPrefix === false && isDefaultPrefix === false) {
+      return
+    }
 
     // Check for permissions required to run ANY atmos command
     if (!message.guild.members.get('219119687743569920' && '447838388943454209').hasPermission(['SEND_MESSAGES', 'EMBED_LINKS', 'USE_EXTERNAL_EMOJIS', 'ADD_REACTIONS'], false, true, false)) {
@@ -100,11 +110,18 @@ module.exports = (client, message) => {
         message.author.dmChannel.send(embed)
       }
 
-      return '' // Very important or else we die
+      return // Very important or else we die
     }
 
     // args and commands my guy
-    const args = message.content.slice(prefix.length).trim().split(/ +/g)
+    var args
+    if (isCustomPrefix) {
+      args = message.content.slice(prefix.length).trim().split(/ +/g)
+    } 
+    if (isDefaultPrefix) {
+      args = message.content.slice(bot.config.prefix.length).trim().split(/ +/g)
+    }
+    
     const command = args.shift().toLowerCase()
     const thumbImg = bot.config.thumbImg
     const reactions = bot.config.reactions

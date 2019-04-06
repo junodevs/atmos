@@ -63,7 +63,7 @@ client.on('ready', () => {
   console.log('[Connected to Discord]')
   client.user.setPresence({
     game: {
-      name: `${client.guilds.size} servers | PRE ${version}`,
+      name: `for ${config.prefix}help | PRE ${version}`,
       type: 'WATCHING'
     },
 
