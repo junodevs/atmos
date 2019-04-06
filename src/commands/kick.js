@@ -11,7 +11,7 @@ exports.run = (client, message, args, embed, thumbImg, reactions, embedColors) =
           embed.setColor(embedColors.error)
           embed.setFooter(`${message.author.username + '#' + message.author.discriminator} | ❤ JunoDevs`)
           embed.setTimestamp(new Date())
-          embed.setThumbnail(bot.thumbImg)
+          embed.setThumbnail(thumbImg)
         } else {
           // Mentioned user is not kickable by the bot, could be higher admin or server owner
         }
