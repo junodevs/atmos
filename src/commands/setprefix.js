@@ -3,9 +3,9 @@ const { dbPromise } = require('../utils/database.js')
 const bot = require('../bot.js')
 
 exports.run = (client, message, args, embed, thumbImg, reactions, embedColors) => {
-  var sqlselect = `SELECT ServerID FROM config_prefix WHERE ServerID=${message.guild.id}`
-  var sqlinsert = `INSERT INTO config_prefix (ServerID, Prefix) VALUES (${message.guild.id}, '${args[0]}')`
-  var sqlupdate = `UPDATE config_prefix SET Prefix='${args[0]}' WHERE ServerID=${message.guild.id}`
+  var sqlselect = `SELECT ServerID FROM config WHERE ServerID=${message.guild.id}`
+  var sqlinsert = `INSERT INTO config (ServerID, Prefix) VALUES (${message.guild.id}, '${args[0]}')`
+  var sqlupdate = `UPDATE config SET Prefix='${args[0]}' WHERE ServerID=${message.guild.id}`
 
   if (message.guild.member(message.author).hasPermission('MANAGE_GUILD')) {
     if (args.length === 1) {

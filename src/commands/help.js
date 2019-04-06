@@ -12,6 +12,7 @@ exports.run = (client, message, args, embed, thumbImg, reactions, embedColors) =
   embed.addBlankField()
   embed.addField(`${prefix}help`, 'This page', true)
   embed.addField(`${prefix}setprefix`, 'Sets custom prefix', true)
+  embed.addField(`${prefix}getprefix`, 'View your custom prefix', true)
   message.channel.send(embed)
 
   message.react(reactions.success)

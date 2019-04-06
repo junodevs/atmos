@@ -14,7 +14,7 @@ module.exports = (client, message) => {
   // For the prefixes and all settings use a database, and have the website connect to the db and have people sign into Discord.
   if (!cache.getPrefixCache(message.guild.id)) {
     // Check if the current server has a custom prefix set or not
-    var sqlcheck = `SELECT Prefix FROM config_prefix WHERE ServerID=${message.guild.id}`
+    var sqlcheck = `SELECT Prefix FROM config WHERE ServerID=${message.guild.id}`
 
     dbPromise(sqlcheck).then((result) => {
       if (result === [] || result[0] === undefined) {
@@ -73,9 +73,8 @@ module.exports = (client, message) => {
     if (isCustomPrefix === false && isDefaultPrefix === false) {
       return
     }
-
     // Check for permissions required to run ANY atmos command
-    if (!message.guild.members.get('219119687743569920' && '447838388943454209').hasPermission(['SEND_MESSAGES', 'EMBED_LINKS', 'USE_EXTERNAL_EMOJIS', 'ADD_REACTIONS'], false, true, false)) {
+    if (!message.guild.members.get('219119687743569920' && '447838388943454209').permissionsIn(message.channel).has(['SEND_MESSAGES', 'EMBED_LINKS', 'USE_EXTERNAL_EMOJIS', 'ADD_REACTIONS'], true)) {
       embed.setTitle('Permission Error')
       embed.setDescription("I don't have the correct global permissions! If you're a normal user, alert a server admin of this error. If you're a server admin, please ensure you have given Atmos the correct permissions, see following:")
       embed.setColor(bot.config.colors.error)
@@ -89,17 +88,17 @@ module.exports = (client, message) => {
       var externalEmojis = '❌'
       var addReactions = '❌'
 
-      if (message.guild.members.get('219119687743569920' && '447838388943454209').hasPermission('SEND_MESSAGES', false, true, false)) sendMessages = '✅'
-      if (message.guild.members.get('219119687743569920' && '447838388943454209').hasPermission('EMBED_LINKS', false, true, false)) embedLinks = '✅'
-      if (message.guild.members.get('219119687743569920' && '447838388943454209').hasPermission('USE_EXTERNAL_EMOJIS', false, true, false)) externalEmojis = '✅'
-      if (message.guild.members.get('219119687743569920' && '447838388943454209').hasPermission('ADD_REACTIONS', false, true, false)) addReactions = '✅'
+      if (message.guild.members.get('219119687743569920' && '447838388943454209').permissionsIn(message.channel).has('SEND_MESSAGES', true)) sendMessages = '✅'
+      if (message.guild.members.get('219119687743569920' && '447838388943454209').permissionsIn(message.channel).has('EMBED_LINKS', true)) embedLinks = '✅'
+      if (message.guild.members.get('219119687743569920' && '447838388943454209').permissionsIn(message.channel).has('USE_EXTERNAL_EMOJIS', true)) externalEmojis = '✅'
+      if (message.guild.members.get('219119687743569920' && '447838388943454209').permissionsIn(message.channel).has('ADD_REACTIONS', true)) addReactions = '✅'
 
       // Respond with what permissions we have and those we don't
       embed.addBlankField()
-      embed.addField(`Send Messages: ${sendMessages}`)
-      embed.addField(`Embed Links: ${embedLinks}`)
-      embed.addField(`Use External Emojis: ${externalEmojis}`)
-      embed.addField(`Add Reactions: ${addReactions}`)
+      embed.addField(`Send Messages: ${sendMessages}`, 'Ability to send messages to the channel.')
+      embed.addField(`Embed Links: ${embedLinks}`, 'Ability to send our fancy custom embedded messages.')
+      embed.addField(`Use External Emojis: ${externalEmojis}`, 'Permission to use external emojis for some reactions.')
+      embed.addField(`Add Reactions: ${addReactions}`, 'Ability to add reactions to messages to communicate completion or failure of commands.')
 
       // Send a DM to message author if we can't send messages
       if (message.author.dmChannel === null) {

@@ -9,7 +9,7 @@ const config = require('../config.js')
 const dbErrorThrown = false // Only run DB error protocol once
 
 const db = mysql.createPool({ // IP needs to be whitelisted to connect as a security measure
-  connectionLimit: 1,
+  connectionLimit: 3,
   host: '176.31.10.37',
   port: 3306,
   user: 'envision_atmos',
