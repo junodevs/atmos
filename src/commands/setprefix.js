@@ -40,7 +40,7 @@ exports.run = (client, message, args, embed, thumbImg, reactions, embedColors) =
         message.react(reactions.error)
       })
     } else {
-      embed.setTitle('Error')
+      embed.setTitle('Command Error')
       embed.setDescription('You must provide the new prefix you wish to use without any spaces!')
       embed.setColor(embedColors.error)
       embed.setFooter(`${message.author.username + '#' + message.author.discriminator} | ❤ JunoDevs`)
