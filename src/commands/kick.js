@@ -30,7 +30,6 @@ exports.run = (client, message, args, embed, thumbImg, reactions, embedColors) =
           message.react(reactions.error)
           return // Breaks of removed so pls don't
         }
-        
         if (member.kickable) {
           args.shift()
           var reason = args.join(' ')
