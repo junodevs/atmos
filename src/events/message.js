@@ -58,7 +58,7 @@ module.exports = (client, message) => {
   }
 
   // Function is required because MySQL is asynchronous and I'm too lazy to actually do it the right way
-  function commandRun() {
+  function commandRun () {
     var isCustomPrefix = false
     var isDefaultPrefix = false
     // Handle message
@@ -117,11 +117,9 @@ module.exports = (client, message) => {
     var args
     if (isCustomPrefix) {
       args = message.content.slice(prefix.length).trim().split(/ +/g)
-    } 
-    if (isDefaultPrefix) {
+    } if (isDefaultPrefix) {
       args = message.content.slice(bot.config.prefix.length).trim().split(/ +/g)
     }
-    
     const command = args.shift().toLowerCase()
     const thumbImg = bot.config.thumbImg
     const reactions = bot.config.reactions
