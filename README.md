@@ -15,6 +15,7 @@ A WIP multi-purpose discord bot written in Javascript by the Juno development te
 
 * 📎 Advanced embed sender
 * ⭐ Starboard
+* 📌 Pinboard
 * 🔨 Powerful moderation
 * 📱 Custom social system
 * 📁 Role Manipulation
