@@ -4,15 +4,15 @@ var prefixCache = {
 
 }
 
-function setPrefixCache(key, value) {
-    prefixCache[key] = value
+function setPrefixCache (key, value) {
+  prefixCache[key] = value
 }
 
-function getPrefixCache(key) {
-    return prefixCache[key]
+function getPrefixCache (key) {
+  return prefixCache[key]
 }
 
 module.exports = {
-setPrefixCache: setPrefixCache,
-getPrefixCache, getPrefixCache
+  setPrefixCache: setPrefixCache,
+  getPrefixCache
 }
