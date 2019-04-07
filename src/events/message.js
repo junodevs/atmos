@@ -45,7 +45,7 @@ module.exports = (client, message) => {
         embed.setTimestamp(new Date())
         embed.setThumbnail(bot.config.thumbImg)
         // Error message
-        embed.addField('`' + err + '`', "Above is the error message. This message is the result of a problem anywhere from a DB connection error to an unhandled promise in a command file. This is an urgent, error, and must be handled as soon as possible by the team.")
+        embed.addField('`' + err + '`', 'Above is the error message. This message is the result of a problem anywhere from a DB connection error to an unhandled promise in a command file. This is an urgent, error, and must be handled as soon as possible by the team.')
 
         bot.client.guilds.get('561768427757240330').channels.get('563495099896430612').send('<@&563495674432192513>', { embed: embed })
       }
