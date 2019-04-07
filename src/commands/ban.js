@@ -1,3 +1,4 @@
+const { dbPromise } = require('../utils/database.js')
 exports.run = (client, message, args, embed, thumbImg, reactions, embedColors) => {
   // ARG 1: User being banned
   // ARG 2: Reason for ban (can use spaces, optional)
@@ -55,14 +56,31 @@ exports.run = (client, message, args, embed, thumbImg, reactions, embedColors) =
             days: 0
           })
 
-          embed.setTitle(`User Successfully Banned`)
-          embed.setColor(embedColors.success)
-          embed.setFooter(`${message.author.username + '#' + message.author.discriminator} | ❤ JunoDevs`)
-          embed.setTimestamp(new Date())
-          embed.setThumbnail(thumbImg)
+          // Add case to the Atmos database, not done. Need to check if case number is already used and if it is regen the number.
+          var caseid = Math.floor(Math.random() * 90000) + 10000
+          var sqlinsert = `INSERT INTO bans (ServerID, UserID, CaseID, BanReason) VALUES (${message.guild.id}, ${user.id}, ${caseid}, '${reason}')`
+          dbPromise(sqlinsert).then(result => {
+            embed.setTitle(`User Successfully Banned`)
+            embed.setDescription(`Case ID #${caseid}`)
+            embed.setColor(embedColors.success)
+            embed.setFooter(`${message.author.username + '#' + message.author.discriminator} | ❤ JunoDevs`)
+            embed.setTimestamp(new Date())
+            embed.setThumbnail(thumbImg)
 
-          message.channel.send(embed)
-          message.react(reactions.success)
+            message.channel.send(embed)
+            message.react(reactions.success)
+          }).catch(err => {
+            console.log(err)
+            embed.setTitle('Database Error')
+            embed.setDescription('There was an error adding the case to the Atmos database. Please try again later.')
+            embed.setColor(embedColors.error)
+            embed.setFooter(`${message.author.username + '#' + message.author.discriminator} | ❤ JunoDevs`)
+            embed.setTimestamp(new Date())
+            embed.setThumbnail(thumbImg)
+
+            message.channel.send(embed)
+            message.react(reactions.error)
+          })
         } else {
           // Mentioned user is not banable by the bot, could be higher admin or server owner
           embed.setTitle('Kicking Error')
