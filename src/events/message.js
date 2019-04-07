@@ -94,6 +94,7 @@ module.exports = (client, message) => {
       if (message.guild.members.get('219119687743569920' && '447838388943454209').permissionsIn(message.channel).has('ADD_REACTIONS', true)) addReactions = '✅'
 
       // Respond with what permissions we have and those we don't
+      embed.addField('Note', "The following list is of the bot's available permissions for the channel you just sent a command attempt in, including channel overrides.")
       embed.addBlankField()
       embed.addField(`Send Messages: ${sendMessages}`, 'Ability to send messages to the channel.')
       embed.addField(`Embed Links: ${embedLinks}`, 'Ability to send our fancy custom embedded messages.')
