@@ -13,6 +13,8 @@ exports.run = (client, message, args, embed, thumbImg, reactions, embedColors) =
   embed.addField(`${prefix}help`, 'This page', true)
   embed.addField(`${prefix}setprefix`, 'Sets custom prefix', true)
   embed.addField(`${prefix}getprefix`, 'View your custom prefix', true)
+  embed.addField(`${prefix}kick`, 'Kick someone from the server', true)
+  embed.addField(`${prefix}ban`, 'Ban someone from the server', true)
   message.channel.send(embed)
 
   message.react(reactions.success)
