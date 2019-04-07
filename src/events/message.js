@@ -29,7 +29,7 @@ module.exports = (client, message) => {
         prefix = cache.getPrefixCache(message.guild.id)
         commandRun() // Prefix checking done; Commands can be ran
       }
-    }).catch((err) => {
+    }).catch((err) => { // This will catch a thrown issue from database connection AND the running command
       if (!bot.dbErrorThrown) {
         bot.client.user.setPresence({
           game: {
@@ -38,14 +38,14 @@ module.exports = (client, message) => {
           status: 'dnd'
         })
 
-        embed.setTitle('DB Connection Error')
-        embed.setDescription('There was an error connecting and/or querying the database, look into this immediately!')
+        embed.setTitle('Command Run Error')
+        embed.setDescription('There was an error in the command run process.')
         embed.setColor(bot.config.colors.error)
         embed.setFooter(`Chief we've got a problem`)
         embed.setTimestamp(new Date())
         embed.setThumbnail(bot.config.thumbImg)
         // Error message
-        embed.addField('`' + err + '`', "Above is the error message. It's possible that this is not database related.")
+        embed.addField('`' + err + '`', "Above is the error message. This message is the result of a problem anywhere from a DB connection error to an unhandled promise in a command file. This is an urgent, error, and must be handled as soon as possible by the team.")
 
         bot.client.guilds.get('561768427757240330').channels.get('563495099896430612').send('<@&563495674432192513>', { embed: embed })
       }

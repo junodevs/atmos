@@ -29,7 +29,7 @@ exports.run = (client, message, args, embed, thumbImg, reactions, embedColors) =
         message.react(reactions.success)
       }).catch((err) => {
         console.log(err)
-        embed.setTitle('Prefix Change Failed')
+        embed.setTitle('Database Error')
         embed.setDescription('A database error occurred. Please try again later.')
         embed.setColor(embedColors.error)
         embed.setFooter(`${message.author.username + '#' + message.author.discriminator} | ❤ JunoDevs`)
