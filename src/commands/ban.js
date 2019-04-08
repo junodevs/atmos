@@ -60,7 +60,6 @@ exports.run = (client, message, args, embed, thumbImg, reactions, embedColors) =
           var sqlinsert = `INSERT INTO bans (ServerID, UserID, BanReason, Date) VALUES (${message.guild.id}, ${user.id}, '${reason}', ${new Date()})`
           dbPromise(sqlinsert).then(result => {
             embed.setTitle(`User Successfully Banned`)
-            embed.setDescription(`Case ID #${caseid}`)
             embed.setColor(embedColors.success)
             embed.setFooter(`${message.author.username + '#' + message.author.discriminator} | ❤ JunoDevs`)
             embed.setTimestamp(new Date())

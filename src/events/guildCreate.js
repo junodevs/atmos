@@ -1,3 +1,4 @@
+const bot = require('../bot.js')
 module.exports = (guild, embed) => {
   if (guild.available) {
     guild.createRole({
@@ -11,9 +12,9 @@ module.exports = (guild, embed) => {
       embed.addField()
       embed.addField()
 
-      embed.setColor(embedColors.error)
+      embed.setColor(bot.config.colors.error)
       embed.setTimestamp(new Date())
-      embed.setThumbnail(thumbImg)
+      embed.setThumbnail(bot.config.thumbImg)
     }).catch((err) => {
       // Handle error
       console.error(err)
