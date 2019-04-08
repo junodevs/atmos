@@ -35,38 +35,48 @@ exports.run = (client, message, args, embed, thumbImg, reactions, embedColors) =
           args.shift()
           var reason = args.join(' ')
 
-          embed.setTitle(`You have been banned from "**${message.guild.name}**"`)
-          embed.setDescription(`Reason: **${reason}**`)
-          embed.setColor(embedColors.error)
-          embed.setFooter(`${message.author.username + '#' + message.author.discriminator} | ❤ JunoDevs`)
-          embed.setTimestamp(new Date())
-          embed.setThumbnail(thumbImg)
-
-          if (user.dmChannel === null) {
-            member.createDM().then(channel => {
-              channel.send(embed)
-            })
-          } else {
-            user.dmChannel.send(embed)
-          }
-
-          // TODO: Log ban to custom moderation log channel if one is set
-          member.ban({
-            reason: reason,
-            days: 0
-          })
-
           // Add case to the Atmos database
-          var sqlinsert = `INSERT INTO bans (ServerID, UserID, BanReason, Date) VALUES (${message.guild.id}, ${user.id}, '${reason}', ${new Date()})`
+          var sqlinsert = `INSERT INTO bans (ServerID, UserID, BanReason) VALUES (${message.guild.id}, ${user.id}, '${reason}')`
           dbPromise(sqlinsert).then(result => {
-            embed.setTitle(`User Successfully Banned`)
-            embed.setColor(embedColors.success)
-            embed.setFooter(`${message.author.username + '#' + message.author.discriminator} | ❤ JunoDevs`)
-            embed.setTimestamp(new Date())
-            embed.setThumbnail(thumbImg)
+            // DM USER
+            function dmUser () {
+              embed.setTitle(`You have been banned from "**${message.guild.name}**"`)
+              embed.setDescription(`Reason: **${reason}**`)
+              embed.setColor(embedColors.error)
+              embed.setTimestamp(new Date())
+              embed.setThumbnail(thumbImg)
 
-            message.channel.send(embed)
-            message.react(reactions.success)
+              if (user.dmChannel === null) {
+                member.createDM().then(channel => {
+                  channel.send(embed)
+                })
+              } else {
+                user.dmChannel.send(embed)
+              }
+            }
+
+            // TODO: Log ban to custom moderation log channel if one is set
+            // Actually perform the ban \/
+            function completeBan () {
+              member.ban({
+                reason: `[${message.author.username}] ${reason}`,
+                days: 0 // # of days of msgs to delete not time banned, that would be too easy
+              })
+
+              // REPLY IN CHAT
+              embed.setTitle(`User Successfully Banned`)
+              embed.setColor(embedColors.success)
+              embed.setFooter(`${message.author.username + '#' + message.author.discriminator} | ❤ JunoDevs`)
+              embed.setTimestamp(new Date())
+              embed.setThumbnail(thumbImg)
+
+              message.channel.send(embed)
+              message.react(reactions.success)
+            }
+
+            // RUN THE BANS AND ENSURE THERE IS MINOR DELAY FOR DM TO REACH USER BEFORE THEY ARE BANNED
+            dmUser()
+            setTimeout(completeBan, 1000)
           }).catch(err => {
             console.log(err)
             embed.setTitle('Database Error')
