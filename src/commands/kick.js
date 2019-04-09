@@ -29,7 +29,7 @@ exports.run = (client, message, args, embed, thumbImg, reactions, embedColors) =
 
           message.channel.send(embed)
           message.react(reactions.error)
-          return // Breaks of removed so pls don't
+          return // Breaks if removed so pls don't
         }
         if (member.kickable) {
           args.shift()
@@ -103,7 +103,7 @@ exports.run = (client, message, args, embed, thumbImg, reactions, embedColors) =
     } else {
       // Bot does not have permission to kick people
       embed.setTitle('Permission Error')
-      embed.setDescription('The "KICK_MEMBERS" permission is required to kick members! ;)')
+      embed.setDescription('The bot requires the "KICK_MEMBERS" permission to kick members!')
       embed.setColor(embedColors.error)
       embed.setFooter(`${message.author.username + '#' + message.author.discriminator} | ❤ JunoDevs`)
       embed.setTimestamp(new Date())

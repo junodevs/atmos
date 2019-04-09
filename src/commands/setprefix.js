@@ -51,8 +51,8 @@ exports.run = (client, message, args, embed, thumbImg, reactions, embedColors) =
       message.react(reactions.error)
     }
   } else {
-    embed.setTitle('Permission Error')
-    embed.setDescription('You must have the MANAGE_SERVER permission to execute this command!')
+    embed.setTitle("You don't have permission to perform this action.")
+    embed.setDescription('You require the MANAGE_SERVER permission to execute this command!')
     embed.setColor(embedColors.error)
     embed.setFooter(`${message.author.username + '#' + message.author.discriminator} | ❤ JunoDevs`)
     embed.setTimestamp(new Date())

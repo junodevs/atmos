@@ -29,7 +29,7 @@ exports.run = (client, message, args, embed, thumbImg, reactions, embedColors) =
 
           message.channel.send(embed)
           message.react(reactions.error)
-          return // Breaks of removed so pls don't
+          return // Breaks if removed so pls don't
         }
         if (member.bannable) {
           args.shift()
@@ -117,7 +117,7 @@ exports.run = (client, message, args, embed, thumbImg, reactions, embedColors) =
     } else {
       // Bot does not have permission to ban people
       embed.setTitle('Permission Error')
-      embed.setDescription('The "BAN_MEMBERS" permission is required to ban members! ;)')
+      embed.setDescription('The bot requires the "BAN_MEMBERS" permission to ban members!')
       embed.setColor(embedColors.error)
       embed.setFooter(`${message.author.username + '#' + message.author.discriminator} | ❤ JunoDevs`)
       embed.setTimestamp(new Date())

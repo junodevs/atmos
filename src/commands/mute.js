@@ -89,7 +89,7 @@ exports.run = (client, message, args, embed, thumbImg, reactions, embedColors) =
     } else {
       // Bot does not have permission to ban people
       embed.setTitle('Permission Error')
-      embed.setDescription('The "MANAGE_MESSAGES" permission is required to mute members! ;)')
+      embed.setDescription('The bot requires the "MANAGE_MESSAGES" permission to mute members!')
       embed.setColor(embedColors.error)
       embed.setFooter(`${message.author.username + '#' + message.author.discriminator} | ❤ JunoDevs`)
       embed.setTimestamp(new Date())
