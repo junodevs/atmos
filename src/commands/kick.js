@@ -1,3 +1,4 @@
+const { dbPromise } = require('../utils/database.js')
 exports.run = (client, message, args, embed, thumbImg, reactions, embedColors) => {
   // ARG 1: User being kicked
   // ARG 2: Reason for kick (can use spaces, optional)
@@ -34,32 +35,46 @@ exports.run = (client, message, args, embed, thumbImg, reactions, embedColors) =
           args.shift()
           var reason = args.join(' ')
 
-          embed.setTitle(`You have been kicked from "**${message.guild.name}**"`)
-          embed.setDescription(`Reason: **${reason}**`)
-          embed.setColor(embedColors.error)
-          embed.setFooter(`${message.author.username + '#' + message.author.discriminator} | ❤ JunoDevs`)
-          embed.setTimestamp(new Date())
-          embed.setThumbnail(thumbImg)
+          // Add case to the Atmos database
+          var sqlinsert = `INSERT INTO kicks (ServerID, UserID, BanReason) VALUES (${message.guild.id}, ${user.id}, '${reason}')`
+          dbPromise(sqlinsert).then(result => {
+            // DM USER
+            function dmUser () {
+              embed.setTitle(`You have been kicked from "**${message.guild.name}**"`)
+              embed.setDescription(`Reason: **${reason}**`)
+              embed.setColor(embedColors.error)
+              embed.setTimestamp(new Date())
+              embed.setThumbnail(thumbImg)
 
-          if (user.dmChannel === null) {
-            member.createDM().then(channel => {
-              channel.send(embed)
-            })
-          } else {
-            user.dmChannel.send(embed)
-          }
+              if (user.dmChannel === null) {
+                member.createDM().then(channel => {
+                  channel.send(embed)
+                })
+              } else {
+                user.dmChannel.send(embed)
+              }
+            }
 
-          // TODO: Log kick to custom moderation log channel if one is set
-          member.kick(reason)
+            // TODO: Log kick to custom moderation log channel if one is set
+            // Actually perform the kick \/
+            function completeKick () {
+              member.kick(reason)
 
-          embed.setTitle(`User Successfully Kicked`)
-          embed.setColor(embedColors.success)
-          embed.setFooter(`${message.author.username + '#' + message.author.discriminator} | ❤ JunoDevs`)
-          embed.setTimestamp(new Date())
-          embed.setThumbnail(thumbImg)
+              // REPLY IN CHAT
+              embed.setTitle(`User Successfully Kicked`)
+              embed.setColor(embedColors.success)
+              embed.setFooter(`${message.author.username + '#' + message.author.discriminator} | ❤ JunoDevs`)
+              embed.setTimestamp(new Date())
+              embed.setThumbnail(thumbImg)
 
-          message.channel.send(embed)
-          message.react(reactions.success)
+              message.channel.send(embed)
+              message.react(reactions.success)
+            }
+
+            // RUN THE KICKS AND ENSURE THERE IS MINOR DELAY FOR DM TO REACH USER BEFORE THEY ARE KICKED
+            dmUser()
+            setTimeout(completeKick, 1000)
+          })
         } else {
           // Mentioned user is not kickable by the bot, could be higher admin or server owner
           embed.setTitle('Kicking Error')
