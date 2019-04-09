@@ -1,20 +1,17 @@
-exports.run = client, message, args, embed, thumbImg, reactions, embedColors => {
+exports.run = (client, message, args, embed, thumbImg, reactions, embedColors) => {
   // ARG 1: User being unbanned
   if (message.guild.member(message.author).hasPermission('BAN_MEMBERS')) {
     if ((message.guild.members.get('219119687743569920' && '447838388943454209').hasPermission('BAN_MEMBERS', false, true, true))) {
       if (args.length === 1) {
         var userid
         var user
-        var member
         if (args[0].startsWith('<@') && args[0].endsWith('>')) {
           if (args[0].startsWith('<@!') && args[0].endsWith('>')) {
             userid = args[0].replace('<@!', '').replace('>', '')
             user = message.mentions.users.get(userid)
-            member = message.channel.guild.member(user)
           } else {
             userid = args[0].replace('<@', '').replace('>', '')
             user = message.mentions.users.get(userid)
-            member = message.channel.guild.member(user)
           }
         } else {
           // Not a valid user error
