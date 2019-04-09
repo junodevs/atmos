@@ -4,7 +4,7 @@ module.exports = (guild, embed) => {
     guild.createRole({
       name: 'Muted',
       color: 'GREY',
-      permissions: 1024
+      permissions: 66560 // READ, VIEW CHANNEL, AND READ HISTORY
     }).then(() => {
       embed.setTitle('')
       embed.setDescription('')

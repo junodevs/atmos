@@ -29,9 +29,9 @@ exports.run = (client, message, args, embed, thumbImg, reactions, embedColors) =
 
           message.channel.send(embed)
           message.react(reactions.error)
-          return // Breaks of removed so pls don't
+          return // Breaks if removed so pls don't
         }
-        if (message.member.highestRole.comparePositionTo(member.highestRole) > 0) {
+        if (message.guild.member(client.user).highestRole.comparePositionTo(member.highestRole) > 0) {
           args.shift()
           var reason = args.join(' ')
 
@@ -51,7 +51,7 @@ exports.run = (client, message, args, embed, thumbImg, reactions, embedColors) =
           }
 
           // TODO: Log ban to custom moderation log channel if one is set
-          member.addRole(mutedRole).catch(console.error)
+          member.addRole(mutedRole)
 
           embed.setTitle(`User Successfully Muted`)
           embed.setColor(embedColors.success)
