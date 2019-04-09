@@ -8,9 +8,9 @@
 
 A WIP multi-purpose discord bot written in Javascript by the Juno development team for moderation, fun, and interacting with your community!
 
-* **Get Support:** Join the [discord](https://discord.gg/53jCeTX)
-* **See new features:** View our [trello](https://trello.com/b/50E1Cd6I/atmos)
-* **Invite the bot:** We're not finished yet so the bot isn't ready to be invited, we're looking to release soon though!
+> * **Get Support:** Join the [discord](https://discord.gg/53jCeTX)
+> * **See new features:** View our [trello](https://trello.com/b/50E1Cd6I/atmos)
+> * **Invite the bot:** We're not finished yet so the bot isn't ready to be invited, we're looking to release soon though!
 
 ## Current features
 
