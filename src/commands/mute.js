@@ -1,3 +1,4 @@
+const { dbPromise } = require('../utils/database.js')
 exports.run = (client, message, args, embed, thumbImg, reactions, embedColors) => {
   // ARG 1: User being muted
   // ARG 2: Reason for mute (can use spaces, optional)
@@ -35,32 +36,35 @@ exports.run = (client, message, args, embed, thumbImg, reactions, embedColors) =
           args.shift()
           var reason = args.join(' ')
 
-          embed.setTitle(`You have been muted in "**${message.guild.name}**"`)
-          embed.setDescription(`Reason: **${reason}**`)
-          embed.setColor(embedColors.error)
-          embed.setFooter(`${message.author.username + '#' + message.author.discriminator} | ❤ JunoDevs`)
-          embed.setTimestamp(new Date())
-          embed.setThumbnail(thumbImg)
+          var sqlinsert = `INSERT INTO mutes (ServerID, UserID, MuteReason) VALUES (${message.guild.id}, ${user.id}, '${reason}')`
+          dbPromise(sqlinsert).then(result => {
+            embed.setTitle(`You have been muted in "**${message.guild.name}**"`)
+            embed.setDescription(`Reason: **${reason}**`)
+            embed.setColor(embedColors.error)
+            embed.setFooter(`${message.author.username + '#' + message.author.discriminator} | ❤ JunoDevs`)
+            embed.setTimestamp(new Date())
+            embed.setThumbnail(thumbImg)
 
-          if (user.dmChannel === null) {
-            member.createDM().then(channel => {
-              channel.send(embed)
-            })
-          } else {
-            user.dmChannel.send(embed)
-          }
+            if (user.dmChannel === null) {
+              member.createDM().then(channel => {
+                channel.send(embed)
+              })
+            } else {
+              user.dmChannel.send(embed)
+            }
 
-          // TODO: Log ban to custom moderation log channel if one is set
-          member.addRole(mutedRole)
+            // TODO: Log ban to custom moderation log channel if one is set
+            member.addRole(mutedRole)
 
-          embed.setTitle(`User Successfully Muted`)
-          embed.setColor(embedColors.success)
-          embed.setFooter(`${message.author.username + '#' + message.author.discriminator} | ❤ JunoDevs`)
-          embed.setTimestamp(new Date())
-          embed.setThumbnail(thumbImg)
+            embed.setTitle(`User Successfully Muted`)
+            embed.setColor(embedColors.success)
+            embed.setFooter(`${message.author.username + '#' + message.author.discriminator} | ❤ JunoDevs`)
+            embed.setTimestamp(new Date())
+            embed.setThumbnail(thumbImg)
 
-          message.channel.send(embed)
-          message.react(reactions.success)
+            message.channel.send(embed)
+            message.react(reactions.success)
+          })
         } else {
           // Mentioned user is not banable by the bot, could be higher admin or server owner
           embed.setTitle('Muting Error')
