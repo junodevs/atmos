@@ -1,11 +1,14 @@
 const bot = require('../bot.js')
 const { dbPromise } = require('../utils/database.js')
-module.exports = (guild, embed) => {
-  if (guild.available) {
+module.exports = (client, guild) => {
+    // !!!!! WE GOTTA MAKE SURE WE HAVE PERMISSION TO DO THIS !!!!!
     guild.createRole({
       name: 'Muted',
       color: 'GREY',
-      permissions: 66560 // READ, VIEW CHANNEL, AND READ HISTORY
+      hoist: false,
+      mentionable: false,
+      position: 1,
+      permissions: 0 // DEVOID OF ANY NEW PERMISSIONS
     }).then(role => {
       var sqlselect = `SELECT ServerID FROM config WHERE ServerID=${guild.id}`
       var sqlinsert = `INSERT INTO config (ServerID, MutedRole) VALUES (${guild.id}, ${role.id})`
@@ -13,14 +16,17 @@ module.exports = (guild, embed) => {
 
       dbPromise(sqlselect).then(result => {
         if (result.length === 0) {
-          return dbPromise(sqlinsert)
+          dbPromise(sqlinsert)
         } else {
-          return dbPromise(sqlupdate)
+          dbPromise(sqlupdate)
         }
+      }).catch((err) => {
+        console.log(err)
       })
 
       guild.channels.array().forEach(channel => {
         if (channel.type.text) {
+          console.log('text')
           channel.overwritePermissions(role, {
             'SEND_MESSAGES': false,
             'ADD_REACTIONS': false
@@ -35,5 +41,4 @@ module.exports = (guild, embed) => {
       // Handle error
       console.error(err)
     })
-  }
 }
