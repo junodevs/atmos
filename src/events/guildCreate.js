@@ -1,8 +1,7 @@
-const bot = require('../bot.js')
-const { dbPromise } = require('../utils/database.js')
+// const { dbPromise } = require('../utils/database.js')
 module.exports = (client, guild) => {
   // !!!!! WE GOTTA MAKE SURE WE HAVE PERMISSION TO DO THIS !!!!!
-  /*guild.createRole({
+  /* guild.createRole({
     name: 'Muted',
     color: 'GREY',
     hoist: false,
@@ -40,5 +39,5 @@ module.exports = (client, guild) => {
   }).catch((err) => {
     // Handle error
     console.error(err)
-  })*/
+  }) */
 }
