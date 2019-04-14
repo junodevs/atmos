@@ -3,6 +3,7 @@ const { dbPromise } = require('../utils/database.js')
 const bot = require('../bot.js')
 
 exports.run = (client, message, args, embed, thumbImg, reactions, embedColors) => {
+  message.channel.startTyping()
   var sqlselect = `SELECT ServerID FROM config WHERE ServerID=${message.guild.id}`
   var sqlinsert = `INSERT INTO config (ServerID, Prefix) VALUES (${message.guild.id}, '${args[0]}')`
   var sqlupdate = `UPDATE config SET Prefix='${args[0]}' WHERE ServerID=${message.guild.id}`
@@ -61,4 +62,5 @@ exports.run = (client, message, args, embed, thumbImg, reactions, embedColors) =
 
     message.react(reactions.error)
   }
+  message.channel.stopTyping()
 }

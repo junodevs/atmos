@@ -1,6 +1,7 @@
 const cache = require('../utils/cache.js')
 const bot = require('../bot.js')
 exports.run = (client, message, args, embed, thumbImg, reactions, embedColors) => {
+  message.channel.startTyping()
   var prefix = cache.getPrefixCache(message.guild.id)
   embed.setTitle('Commands List')
   embed.setDescription('For more info, check https://atmosbot.com')
@@ -8,7 +9,7 @@ exports.run = (client, message, args, embed, thumbImg, reactions, embedColors) =
   embed.setThumbnail(thumbImg)
   embed.setFooter(`${message.author.username + '#' + message.author.discriminator} | ❤ JunoDevs`)
   embed.setTimestamp(new Date())
-  embed.addField(`All commands can use custom prefix (**${prefix}**) or the default prefix (**${bot.config.prefix}**)`, 'Not all existing commands shown')
+  embed.addField(`All commands can use custom prefix (**${prefix}**) or the default prefix (**${bot.config.prefix}**)`, 'Not all existing commands shown! Please be patient, Atmos is currently in a pre-release stage!')
   embed.addBlankField()
   embed.addField(`${prefix}help`, 'This page', false)
   embed.addField(`${prefix}setprefix`, 'Sets custom prefix', false)
@@ -19,4 +20,5 @@ exports.run = (client, message, args, embed, thumbImg, reactions, embedColors) =
   message.channel.send(embed)
 
   message.react(reactions.success)
+  message.channel.stopTyping()
 }

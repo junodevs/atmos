@@ -2,6 +2,7 @@ const { dbPromise } = require('../utils/database.js')
 exports.run = (client, message, args, embed, thumbImg, reactions, embedColors) => {
   // ARG 1: User being kicked
   // ARG 2: Reason for kick (can use spaces, optional)
+  message.channel.startTyping()
   if (message.guild.member(message.author).hasPermission('KICK_MEMBERS')) {
     if (message.guild.members.get('219119687743569920' && '447838388943454209').hasPermission('KICK_MEMBERS', false, true, true)) {
       if (args.length >= 1) {
@@ -124,4 +125,5 @@ exports.run = (client, message, args, embed, thumbImg, reactions, embedColors) =
     message.channel.send(embed)
     message.react(reactions.error)
   }
+  message.channel.stopTyping()
 }

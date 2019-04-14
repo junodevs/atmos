@@ -2,6 +2,7 @@ const cache = require('../utils/cache.js')
 const bot = require('../bot.js')
 
 exports.run = (client, message, args, embed, thumbImg, reactions, embedColors) => {
+  message.channel.startTyping()
   embed.setTitle('Current Custom Prefix')
   embed.setColor(embedColors.default)
   embed.setFooter(`${message.author.username + '#' + message.author.discriminator} | ❤ JunoDevs`)
@@ -11,4 +12,5 @@ exports.run = (client, message, args, embed, thumbImg, reactions, embedColors) =
   message.channel.send(embed)
 
   message.react(reactions.success)
+  message.channel.stopTyping()
 }
