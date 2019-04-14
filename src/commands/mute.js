@@ -2,7 +2,7 @@ const { dbPromise } = require('../utils/database.js')
 exports.run = (client, message, args, embed, thumbImg, reactions, embedColors) => {
   // ARG 1: User being muted
   // ARG 2: Reason for mute (can use spaces, optional)
-  if (message.guild.member(message.author).hasPermission('MANAGE_MESSAGES')) {
+  /*if (message.guild.member(message.author).hasPermission('MANAGE_MESSAGES')) {
     if (message.guild.members.get('219119687743569920' && '447838388943454209').hasPermission('MANAGE_MESSAGES', false, true, true)) {
       if (args.length >= 1) {
         var userid
@@ -113,5 +113,5 @@ exports.run = (client, message, args, embed, thumbImg, reactions, embedColors) =
 
     message.channel.send(embed)
     message.react(reactions.error)
-  }
+  }*/
 }
