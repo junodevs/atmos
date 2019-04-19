@@ -75,7 +75,7 @@ module.exports = (client, message) => {
     }
     // Check for permissions required to run ANY atmos command
     var environment
-    if (processs.env.TESTER_ENV) {
+    if (process.env.TESTER_ENV) {
       environment = '447838388943454209'
     } else {
       environment = '219119687743569920'
