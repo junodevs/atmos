@@ -13,8 +13,8 @@ module.exports = (client, guild) => {
     var sqlinsert = `INSERT INTO config (ServerID, MutedRole) VALUES (${guild.id}, ${role.id})`
     var sqlupdate = `UPDATE config SET MutedRole=${role.id} WHERE ServerID=${guild.id}`
 
-    console.log('here')
-    guild.channels.array().forEach(channel => {
+    guild.channels.tap(channel => {
+      console.log(`Debug: ${channel.name}`)
       if (channel.type.text) {
         console.log('text')
         channel.overwritePermissions(role, {

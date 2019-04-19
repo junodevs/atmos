@@ -2,7 +2,8 @@ const cache = require('../utils/cache.js')
 const bot = require('../bot.js')
 exports.run = (client, message, args, embed, thumbImg, reactions, embedColors) => {
   message.channel.startTyping()
-  var prefix = cache.getPrefixCache(message.guild.id)
+  var prefix = 'No custom prefix'
+  if (cache.getPrefixCache(message.guild.id)) prefix = cache.getPrefixCache(message.guild.id)
   embed.setTitle('Commands List')
   embed.setDescription('For more info, check https://atmosbot.com')
   embed.setColor(embedColors.default)
