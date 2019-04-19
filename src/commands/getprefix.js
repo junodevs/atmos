@@ -14,5 +14,5 @@ exports.run = (client, message, args, embed, thumbImg, reactions, embedColors) =
   message.channel.send(embed)
 
   message.react(reactions.success)
-  message.channel.stopTyping()
+  message.channel.stopTyping(true)
 }
