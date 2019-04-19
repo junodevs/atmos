@@ -17,6 +17,8 @@ exports.run = (client, message, args, embed, thumbImg, reactions, embedColors) =
   embed.addField(`${prefix}getprefix`, 'View your custom prefix', false)
   embed.addField(`${prefix}kick`, 'Kick someone from a guild', false)
   embed.addField(`${prefix}ban`, 'Ban someone from a guild', false)
+  embed.addField(`${prefix}unban`, 'Unban someone from a guild', false)
+  embed.addField(`${prefix}ow`, 'Retrieve overwatch statistics on a specific player, platform, and region', false)
   embed.addBlankField()
   message.channel.send(embed)
 
