@@ -82,7 +82,7 @@ exports.run = (client, message, args, embed, thumbImg, reactions, embedColors) =
         if (err) console.log(err)
 
         embed.setTitle(`Overwatch Player Stats: ${json.username}`)
-        embed.setDescription(`Level: ${json.level}`)
+        embed.setDescription(`Level: ${json.level} (Includes stars, not player border)`)
         embed.setColor(embedColors.success)
         embed.setFooter(`${message.author.username + '#' + message.author.discriminator} | ❤ JunoDevs`)
         embed.setTimestamp(new Date())
