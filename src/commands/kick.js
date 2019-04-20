@@ -37,7 +37,7 @@ exports.run = (client, message, args, embed, thumbImg, reactions, embedColors) =
           var reason = args.join(' ')
 
           // Add case to the Atmos database
-          var sqlinsert = `INSERT INTO kicks (ServerID, UserID, BanReason) VALUES (${message.guild.id}, ${user.id}, '${reason}')`
+          var sqlinsert = `INSERT INTO kicks (ServerID, UserID, KickReason) VALUES (${message.guild.id}, ${user.id}, '${reason}')`
           dbPromise(sqlinsert).then(result => {
             // DM USER
             function dmUser () {

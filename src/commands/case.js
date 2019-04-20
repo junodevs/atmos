@@ -16,12 +16,30 @@ exports.run = (client, message, args, embed, thumbImg, reactions, embedColors) =
       selectsql = `SELECT CaseID,ServerID,UserID,WarnReason,Date FROM warnings WHERE CaseID=${args[1]}`
     } else {
       // Not a valid punish type
+      embed.setTitle('Command Error')
+      embed.setDescription('The punishment type provided in the first argument was invalid.')
+      embed.setColor(embedColors.error)
+      embed.setFooter(`${message.author.username + '#' + message.author.discriminator} | ❤ JunoDevs`)
+      embed.setTimestamp(new Date())
+      embed.setThumbnail(thumbImg)
+
+      message.channel.send(embed)
+      message.react(reactions.error)
       return
     }
 
     dbPromise(selectsql).then(result => {
       if (result === [] || result[0] === undefined) {
         // No case found
+        embed.setTitle('Retrieval Error')
+        embed.setDescription('There was an error retrieving the specified CaseID. Make sure you have the right CaseID. If the error persists please try again later.')
+        embed.setColor(embedColors.error)
+        embed.setFooter(`${message.author.username + '#' + message.author.discriminator} | ❤ JunoDevs`)
+        embed.setTimestamp(new Date())
+        embed.setThumbnail(thumbImg)
+
+        message.channel.send(embed)
+        message.react(reactions.error)
         console.log('No Case Found')
       } else {
         var caseinfo = result[0]
@@ -35,7 +53,7 @@ exports.run = (client, message, args, embed, thumbImg, reactions, embedColors) =
         } else if (args[0].toLowerCase() === 'warning') {
           reason = caseinfo.WarnReason
         }
-        
+
         // Format date
         var formatting = date.format(
           caseinfo.Date,
@@ -44,6 +62,8 @@ exports.run = (client, message, args, embed, thumbImg, reactions, embedColors) =
         var fulldate = formatting + ' (Universal Standard Time)'
 
         if (caseinfo.ServerID = message.guild.id) {
+          console.log(caseinfo.ServerID)
+          console.log(message.guild.id)
           embed.setTitle(`Case Info: ${caseinfo.CaseID}`)
           embed.setColor(embedColors.success)
           embed.setFooter(`${message.author.username + '#' + message.author.discriminator} | ❤ JunoDevs`)
@@ -57,11 +77,31 @@ exports.run = (client, message, args, embed, thumbImg, reactions, embedColors) =
           message.react(reactions.success)
         } else {
           // Not valid for this guild
+          embed.setTitle('Retrieval Error')
+          embed.setDescription('The specified CaseID does not pertain to this server.')
+          embed.setColor(embedColors.error)
+          embed.setFooter(`${message.author.username + '#' + message.author.discriminator} | ❤ JunoDevs`)
+          embed.setTimestamp(new Date())
+          embed.setThumbnail(thumbImg)
+
+          message.channel.send(embed)
+          message.react(reactions.error)
         }
       }
     })
   } else {
     // Exactly 2 args
+    embed.setTitle('Command Error')
+    embed.setDescription('You must provide 2 arguments.')
+    embed.setColor(embedColors.error)
+    embed.setFooter(`${message.author.username + '#' + message.author.discriminator} | ❤ JunoDevs`)
+    embed.setTimestamp(new Date())
+    embed.setThumbnail(thumbImg)
+    embed.addField('First Argument', 'Punishment Type (Ex. ban, kick, mute)')
+    embed.addField('Second Argument', 'CaseID (Ex. 4, 23, 549)')
+
+    message.channel.send(embed)
+    message.react(reactions.error)
   }
   message.channel.stopTyping(true)
 }

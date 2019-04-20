@@ -11,7 +11,6 @@ exports.run = (client, message, args, embed, thumbImg, reactions, embedColors) =
   embed.setFooter(`${message.author.username + '#' + message.author.discriminator} | ❤ JunoDevs`)
   embed.setTimestamp(new Date())
   embed.addField(`All commands can use custom prefix (**${prefix}**) or the default prefix (**${bot.config.prefix}**)`, 'Not all existing commands shown! Please be patient, Atmos is currently in a pre-release stage!')
-  embed.addBlankField()
   embed.addField(`${prefix}help`, 'This page', false)
   embed.addField(`${prefix}setprefix`, 'Sets custom prefix', false)
   embed.addField(`${prefix}getprefix`, 'View your custom prefix', false)
@@ -19,7 +18,7 @@ exports.run = (client, message, args, embed, thumbImg, reactions, embedColors) =
   embed.addField(`${prefix}ban`, 'Ban someone from a guild', false)
   embed.addField(`${prefix}unban`, 'Unban someone from a guild', false)
   embed.addField(`${prefix}ow`, 'Retrieve overwatch statistics on a specific player, platform, and region', false)
-  embed.addBlankField()
+  embed.addField(`${prefix}case`, 'Retrieve the information on a punishment case in your server', false)
   message.channel.send(embed)
 
   message.react(reactions.success)
