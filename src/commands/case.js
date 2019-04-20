@@ -1,4 +1,5 @@
 var { dbPromise } = require('../utils/database.js')
+const date = require('date-fns')
 exports.run = (client, message, args, embed, thumbImg, reactions, embedColors) => {
   // ARG 1: Punishment type
   // ARG 2: CaseID
@@ -35,6 +36,13 @@ exports.run = (client, message, args, embed, thumbImg, reactions, embedColors) =
           reason = caseinfo.WarnReason
         }
         
+        // Format date
+        var formatting = date.format(
+          caseinfo.Date,
+          'MMMM Do, YYYY h:m A'
+        )
+        var fulldate = formatting + ' (Universal Standard Time)'
+
         if (caseinfo.ServerID = message.guild.id) {
           embed.setTitle(`Case Info: ${caseinfo.CaseID}`)
           embed.setColor(embedColors.success)
@@ -43,7 +51,7 @@ exports.run = (client, message, args, embed, thumbImg, reactions, embedColors) =
           embed.setThumbnail(thumbImg)
           embed.addField('User Punished', `<@${caseinfo.UserID}>`)
           embed.addField('Punishment Reason', reason)
-          embed.addField('Date Punished', caseinfo.Date)
+          embed.addField('Date Punished', fulldate)
 
           message.channel.send(embed)
           message.react(reactions.success)
