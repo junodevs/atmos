@@ -53,6 +53,9 @@ exports.run = (client, message, args, embed, thumbImg, reactions, embedColors) =
         } else if (args[0].toLowerCase() === 'warning') {
           reason = caseinfo.WarnReason
         }
+        if (!reason) {
+          reason = 'No specified reason.'
+        }
 
         // Format date
         var formatting = date.format(
@@ -61,9 +64,7 @@ exports.run = (client, message, args, embed, thumbImg, reactions, embedColors) =
         )
         var fulldate = formatting + ' (Universal Standard Time)'
 
-        if (caseinfo.ServerID = message.guild.id) {
-          console.log(caseinfo.ServerID)
-          console.log(message.guild.id)
+        if (caseinfo.ServerID === message.guild.id) {
           embed.setTitle(`Case Info: ${caseinfo.CaseID}`)
           embed.setColor(embedColors.success)
           embed.setFooter(`${message.author.username + '#' + message.author.discriminator} | ❤ JunoDevs`)
