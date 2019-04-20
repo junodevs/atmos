@@ -6,9 +6,9 @@ exports.run = (client, message, args, embed, thumbImg, reactions, embedColors) =
 
     var region
     var platform
-    if (args[1] === 'us') {
+    if (args[1].toLowerCase() === 'us') {
       region = 'us'
-    } else if (args[1] === 'eu') {
+    } else if (args[1].toLowerCase() === 'eu') {
       region = 'eu'
     } else {
       embed.setTitle('Region Error')
@@ -25,11 +25,11 @@ exports.run = (client, message, args, embed, thumbImg, reactions, embedColors) =
       return
     }
 
-    if (args[2] === 'pc') {
+    if (args[2].toLowerCase() === 'pc') {
       platform = 'pc'
-    } else if (args[2] === 'xbl') {
+    } else if (args[2].toLowerCase() === 'xbl') {
       platform = 'xbl'
-    } else if (args[2] === 'psn') {
+    } else if (args[2].toLowerCase() === 'psn') {
       platform = 'psn'
     } else {
       embed.setTitle('Platform Error')
