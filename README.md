@@ -5,6 +5,7 @@
 [![Discord](https://img.shields.io/discord/562437899707219978.svg?color=%237289DA&logo=join)](https://discord.gg/53jCeTX)
 [![Travis CI](https://api.travis-ci.org/junodevs/atmos.svg?branch=master)](https://travis-ci.org/junodevs/atmos)
 [![Issues](https://img.shields.io/github/issues/junodevs/atmos.svg)](https://github.com/junodevs/atmos/issues)
+[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com)
 
 A WIP multi-purpose discord bot written in Javascript by the Juno development team for moderation, fun, and interacting with your community!
 

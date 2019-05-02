@@ -74,7 +74,13 @@ module.exports = (client, message) => {
       return
     }
     // Check for permissions required to run ANY atmos command
-    if (!message.guild.members.get('219119687743569920' && '447838388943454209').permissionsIn(message.channel).has(['SEND_MESSAGES', 'EMBED_LINKS', 'USE_EXTERNAL_EMOJIS', 'ADD_REACTIONS'], true)) {
+    var environment
+    if (process.env.TESTER_ENV) {
+      environment = '447838388943454209'
+    } else {
+      environment = '219119687743569920'
+    }
+    if (!message.guild.members.get(environment).permissionsIn(message.channel).has(['SEND_MESSAGES', 'EMBED_LINKS', 'USE_EXTERNAL_EMOJIS', 'ADD_REACTIONS'], true)) {
       embed.setTitle('Permission Error')
       embed.setDescription("I don't have the correct global permissions! If you're a normal user, alert a server admin of this error. If you're a server admin, please ensure you have given Atmos the correct permissions, see following:")
       embed.setColor(bot.config.colors.error)
