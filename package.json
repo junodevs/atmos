@@ -1,6 +1,6 @@
 {
   "name": "atmos-bot",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A multi-purpose discord bot written in JavaScript by Juno",
   "main": "src/bot.js",
   "scripts": {
