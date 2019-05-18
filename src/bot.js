@@ -8,11 +8,19 @@ const config = require('../config.js')
 
 const dbErrorThrown = false // Only run DB error protocol once
 
+var dbuser
+if (process.env.TESTER_ENV) {
+    dbuser = 'envision_atmos_d' // DEV ENV
+    console.log('Development environment detected...connecting to development database account instead of production...')
+  } else {
+    dbuser = 'envision_atmos'
+    console.log('Production environment detected...connecting to production database account for security...')
+  }
 const db = mysql.createPool({ // IP needs to be whitelisted to connect as a security measure
   connectionLimit: 3,
   host: '176.31.10.37',
   port: 3306,
-  user: 'envision_atmos',
+  user: dbuser,
   password: process.env.DB_PASS,
   database: 'envision_atmos_main'
 })
@@ -69,14 +77,12 @@ client.on('ready', () => {
 
     status: 'online'
   })
-
-  if (process.env.TESTER_ENV) {
-    process.exit(0) // Exit as success if on test env like Travis, we don't need to run the bot for an hour
-  }
 })
 
 if (process.env.BOT_TOKEN === undefined) {
   client.login(process.env.TESTER_TOKEN)
+  console.log('No production bot token found...attempting connection to tester token...')
 } else {
   client.login(process.env.BOT_TOKEN)
+  console.log('Production bot token found...attempting connection to production bot account...')
 }
