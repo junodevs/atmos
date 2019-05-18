@@ -11,9 +11,9 @@ A WIP multi-purpose discord bot written in Javascript by the Juno development te
 
 > * **Get Support:** Join the [discord](https://discord.gg/53jCeTX)
 > * **See new features:** View our [trello](https://trello.com/b/50E1Cd6I/atmos)
-> * **Invite the bot:** We're not finished yet so the bot isn't ready to be invited, we're looking to release soon though!
+> * **Invite the bot:** [click here to add](https://discordapp.com/oauth2/authorize?client_id=219119687743569920&scope=bot&permissions=8)!
 
-## Current features
+## Current and planned features
 
 * 📎 Advanced embed sender
 * ⭐ Starboard
