@@ -66,7 +66,9 @@ client.on('ready', () => {
     status: 'online'
   })
 })
-
+if (process.env.TESTER_ENV) {
+  process.exit(0) // Stop running now that you've loaded modules and run standard for tester env
+}
 if (process.env.BOT_TOKEN === undefined) {
   client.login(process.env.TESTER_TOKEN)
   log('No production bot token found...attempting connection to tester token...', 'warn')
