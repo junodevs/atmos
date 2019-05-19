@@ -5,7 +5,8 @@
   "main": "src/bot.js",
   "scripts": {
     "start": "standard && nodemon .",
-    "test": "standard && node src/bot.js"
+    "test": "standard && node src/bot.js",
+    "lint": "standard --fix"
   },
   "repository": {
     "type": "git",
@@ -27,5 +28,6 @@
     "enmap": "^4.8.2",
     "overwatch-api": "^0.7.5",
     "mysql": "^2.17.1"
-  }
+  },
+    "chalk": "^2.4.2"
 }

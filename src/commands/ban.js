@@ -1,4 +1,6 @@
 const { dbPromise } = require('../utils/database.js')
+const config = require('../../config')
+
 exports.run = (client, message, args, embed, thumbImg, reactions, embedColors) => {
   // ARG 1: User being banned
   // ARG 2: Reason for ban (can use spaces, optional)
@@ -24,7 +26,7 @@ exports.run = (client, message, args, embed, thumbImg, reactions, embedColors) =
           embed.setTitle('Command Error')
           embed.setDescription('The first argument must be the mention of the user you wish to ban!')
           embed.setColor(embedColors.error)
-          embed.setFooter(`${message.author.username + '#' + message.author.discriminator} | ❤ JunoDevs`)
+          embed.setFooter(config.footer(message))
           embed.setTimestamp(new Date())
           embed.setThumbnail(thumbImg)
 
@@ -46,7 +48,6 @@ exports.run = (client, message, args, embed, thumbImg, reactions, embedColors) =
               embed.setColor(embedColors.error)
               embed.setTimestamp(new Date())
               embed.setThumbnail(thumbImg)
-
               if (user.dmChannel === null) {
                 member.createDM().then(channel => {
                   channel.send(embed)
@@ -55,9 +56,7 @@ exports.run = (client, message, args, embed, thumbImg, reactions, embedColors) =
                 user.dmChannel.send(embed)
               }
             }
-
             // TODO: Log ban to custom moderation log channel if one is set
-            // Actually perform the ban \/
             function completeBan () {
               member.ban({
                 reason: `[${message.author.username}] ${reason}`,
@@ -67,7 +66,7 @@ exports.run = (client, message, args, embed, thumbImg, reactions, embedColors) =
               // REPLY IN CHAT
               embed.setTitle(`User Successfully Banned`)
               embed.setColor(embedColors.success)
-              embed.setFooter(`${message.author.username + '#' + message.author.discriminator} | ❤ JunoDevs`)
+              embed.setFooter(config.footer(message))
               embed.setTimestamp(new Date())
               embed.setThumbnail(thumbImg)
 
@@ -83,7 +82,7 @@ exports.run = (client, message, args, embed, thumbImg, reactions, embedColors) =
             embed.setTitle('Database Error')
             embed.setDescription('There was an error adding the case to the Atmos database. Please try again later.')
             embed.setColor(embedColors.error)
-            embed.setFooter(`${message.author.username + '#' + message.author.discriminator} | ❤ JunoDevs`)
+            embed.setFooter(config.footer(message))
             embed.setTimestamp(new Date())
             embed.setThumbnail(thumbImg)
 
@@ -95,7 +94,7 @@ exports.run = (client, message, args, embed, thumbImg, reactions, embedColors) =
           embed.setTitle('Banning Error')
           embed.setDescription('The specified user is not bannable by the bot.')
           embed.setColor(embedColors.error)
-          embed.setFooter(`${message.author.username + '#' + message.author.discriminator} | ❤ JunoDevs`)
+          embed.setFooter(config.footer(message))
           embed.setTimestamp(new Date())
           embed.setThumbnail(thumbImg)
           embed.addField(`Try hoisting the Atmos role above ${user.username}'s role!`, 'This error may also occur if the mentioned user is the server owner.')
@@ -108,7 +107,7 @@ exports.run = (client, message, args, embed, thumbImg, reactions, embedColors) =
         embed.setTitle('Command Error')
         embed.setDescription('You must provide a user to ban. (And optionally a reason)')
         embed.setColor(embedColors.error)
-        embed.setFooter(`${message.author.username + '#' + message.author.discriminator} | ❤ JunoDevs`)
+        embed.setFooter(config.footer(message))
         embed.setTimestamp(new Date())
         embed.setThumbnail(thumbImg)
 
@@ -120,7 +119,7 @@ exports.run = (client, message, args, embed, thumbImg, reactions, embedColors) =
       embed.setTitle('Permission Error')
       embed.setDescription('The bot requires the "BAN_MEMBERS" permission to ban members!')
       embed.setColor(embedColors.error)
-      embed.setFooter(`${message.author.username + '#' + message.author.discriminator} | ❤ JunoDevs`)
+      embed.setFooter(config.footer(message))
       embed.setTimestamp(new Date())
       embed.setThumbnail(thumbImg)
 
@@ -132,7 +131,7 @@ exports.run = (client, message, args, embed, thumbImg, reactions, embedColors) =
     embed.setTitle("You don't have permission to perform this action.")
     embed.setDescription('You require the "BAN_MEMBERS" permission to use this command!')
     embed.setColor(embedColors.error)
-    embed.setFooter(`${message.author.username + '#' + message.author.discriminator} | ❤ JunoDevs`)
+    embed.setFooter(config.footer(message))
     embed.setTimestamp(new Date())
     embed.setThumbnail(thumbImg)
 

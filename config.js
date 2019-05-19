@@ -18,6 +18,9 @@ module.exports = {
     warning: '#ffd139',
     success: '#26cb7c'
   },
-  footer: `Author#0000 | ❤ JunoDevs`,
+  // footer: `Author#0000 | ❤ JunoDevs`,
+  footer: (msg) => {
+    return `${msg.author.username + '#' + msg.author.discriminator} | ❤ JunoDevs`
+  },
   thumbImg: 'https://atmosbot.com/img/Atmos.png'
 }

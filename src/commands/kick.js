@@ -1,4 +1,6 @@
 const { dbPromise } = require('../utils/database.js')
+const config = require('../../config')
+
 exports.run = (client, message, args, embed, thumbImg, reactions, embedColors) => {
   // ARG 1: User being kicked
   // ARG 2: Reason for kick (can use spaces, optional)
@@ -24,7 +26,7 @@ exports.run = (client, message, args, embed, thumbImg, reactions, embedColors) =
           embed.setTitle('Command Error')
           embed.setDescription('The first argument must be the mention of the user you wish to kick!')
           embed.setColor(embedColors.error)
-          embed.setFooter(`${message.author.username + '#' + message.author.discriminator} | ❤ JunoDevs`)
+          embed.setFooter(config.footer(message))
           embed.setTimestamp(new Date())
           embed.setThumbnail(thumbImg)
 
@@ -64,7 +66,7 @@ exports.run = (client, message, args, embed, thumbImg, reactions, embedColors) =
               // REPLY IN CHAT
               embed.setTitle(`User Successfully Kicked`)
               embed.setColor(embedColors.success)
-              embed.setFooter(`${message.author.username + '#' + message.author.discriminator} | ❤ JunoDevs`)
+              embed.setFooter(config.footer(message))
               embed.setTimestamp(new Date())
               embed.setThumbnail(thumbImg)
 
@@ -81,7 +83,7 @@ exports.run = (client, message, args, embed, thumbImg, reactions, embedColors) =
           embed.setTitle('Kicking Error')
           embed.setDescription('The specified user is not kickable by the bot.')
           embed.setColor(embedColors.error)
-          embed.setFooter(`${message.author.username + '#' + message.author.discriminator} | ❤ JunoDevs`)
+          embed.setFooter(config.footer(message))
           embed.setTimestamp(new Date())
           embed.setThumbnail(thumbImg)
           embed.addField(`Try hoisting the Atmos role above ${user.username}'s role!`, 'This error may also occur if the mentioned user is the server owner.')
@@ -94,7 +96,7 @@ exports.run = (client, message, args, embed, thumbImg, reactions, embedColors) =
         embed.setTitle('Command Error')
         embed.setDescription('You must provide a user to kick. (And optionally a reason)')
         embed.setColor(embedColors.error)
-        embed.setFooter(`${message.author.username + '#' + message.author.discriminator} | ❤ JunoDevs`)
+        embed.setFooter(config.footer(message))
         embed.setTimestamp(new Date())
         embed.setThumbnail(thumbImg)
 
@@ -106,7 +108,7 @@ exports.run = (client, message, args, embed, thumbImg, reactions, embedColors) =
       embed.setTitle('Permission Error')
       embed.setDescription('The bot requires the "KICK_MEMBERS" permission to kick members!')
       embed.setColor(embedColors.error)
-      embed.setFooter(`${message.author.username + '#' + message.author.discriminator} | ❤ JunoDevs`)
+      embed.setFooter(config.footer(message))
       embed.setTimestamp(new Date())
       embed.setThumbnail(thumbImg)
 
@@ -118,7 +120,7 @@ exports.run = (client, message, args, embed, thumbImg, reactions, embedColors) =
     embed.setTitle("You don't have permission to perform this action.")
     embed.setDescription('You require the "KICK_MEMBERS" permission to use this command!')
     embed.setColor(embedColors.error)
-    embed.setFooter(`${message.author.username + '#' + message.author.discriminator} | ❤ JunoDevs`)
+    embed.setFooter(config.footer(message))
     embed.setTimestamp(new Date())
     embed.setThumbnail(thumbImg)
 

@@ -1,9 +1,11 @@
+const config = require('../../config')
+
 exports.run = (client, message, args, embed, thumbImg, reactions, embedColors) => {
   if (args.length === 0) {
     embed.setTitle(message.author.username)
     embed.setDescription('User Information')
     embed.setColor(embedColors.default)
-    embed.setFooter(`${message.author.username + '#' + message.author.discriminator} | ❤ JunoDevs`)
+    embed.setFooter(config.footer(message))
     embed.setTimestamp(new Date())
     embed.setThumbnail(message.author.displayAvatarURL)
     // Start Information
@@ -28,7 +30,7 @@ exports.run = (client, message, args, embed, thumbImg, reactions, embedColors) =
         embed.setTitle(who.username)
         embed.setDescription('User Information')
         embed.setColor(embedColors.default)
-        embed.setFooter(`${message.author.username + '#' + message.author.discriminator} | ❤ JunoDevs`)
+        embed.setFooter(config.footer(message))
         embed.setTimestamp(new Date())
         embed.setThumbnail(who.displayAvatarURL)
         // Start Information
@@ -42,7 +44,7 @@ exports.run = (client, message, args, embed, thumbImg, reactions, embedColors) =
         embed.setTitle('Error')
         embed.setDescription('Your first argument must be a @mention')
         embed.setColor(embedColors.default)
-        embed.setFooter(`${message.author.username + '#' + message.author.discriminator} | ❤ JunoDevs`)
+        embed.setFooter(config.footer(message))
         embed.setTimestamp(new Date())
         embed.setThumbnail(thumbImg)
 
@@ -53,7 +55,7 @@ exports.run = (client, message, args, embed, thumbImg, reactions, embedColors) =
       embed.setTitle('Error')
       embed.setDescription('Too many arguments given. There should be one or no arguments given.')
       embed.setColor(embedColors.default)
-      embed.setFooter(`${message.author.username + '#' + message.author.discriminator} | ❤ JunoDevs`)
+      embed.setFooter(config.footer(message))
       embed.setTimestamp(new Date())
       embed.setThumbnail(thumbImg)
 

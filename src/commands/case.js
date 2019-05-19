@@ -1,4 +1,5 @@
 var { dbPromise } = require('../utils/database.js')
+const config = require('../../config')
 const date = require('date-fns')
 exports.run = (client, message, args, embed, thumbImg, reactions, embedColors) => {
   // ARG 1: Punishment type
@@ -19,7 +20,7 @@ exports.run = (client, message, args, embed, thumbImg, reactions, embedColors) =
       embed.setTitle('Command Error')
       embed.setDescription('The punishment type provided in the first argument was invalid.')
       embed.setColor(embedColors.error)
-      embed.setFooter(`${message.author.username + '#' + message.author.discriminator} | ❤ JunoDevs`)
+      embed.setFooter(config.footer(message))
       embed.setTimestamp(new Date())
       embed.setThumbnail(thumbImg)
 
@@ -34,7 +35,7 @@ exports.run = (client, message, args, embed, thumbImg, reactions, embedColors) =
         embed.setTitle('Retrieval Error')
         embed.setDescription('There was an error retrieving the specified CaseID. Make sure you have the right CaseID. If the error persists please try again later.')
         embed.setColor(embedColors.error)
-        embed.setFooter(`${message.author.username + '#' + message.author.discriminator} | ❤ JunoDevs`)
+        embed.setFooter(config.footer(message))
         embed.setTimestamp(new Date())
         embed.setThumbnail(thumbImg)
 
@@ -56,24 +57,21 @@ exports.run = (client, message, args, embed, thumbImg, reactions, embedColors) =
         if (!reason) {
           reason = 'No specified reason.'
         }
-
         // Format date
         var formatting = date.format(
           caseinfo.Date,
           'MMMM Do, YYYY h:m A'
         )
         var fulldate = formatting + ' (Universal Standard Time)'
-
         if (caseinfo.ServerID === message.guild.id) {
           embed.setTitle(`Case Info: ${caseinfo.CaseID}`)
           embed.setColor(embedColors.success)
-          embed.setFooter(`${message.author.username + '#' + message.author.discriminator} | ❤ JunoDevs`)
+          embed.setFooter(config.footer(message))
           embed.setTimestamp(new Date())
           embed.setThumbnail(thumbImg)
           embed.addField('User Punished', `<@${caseinfo.UserID}>`)
           embed.addField('Punishment Reason', reason)
           embed.addField('Date Punished', fulldate)
-
           message.channel.send(embed)
           message.react(reactions.success)
         } else {
@@ -81,7 +79,7 @@ exports.run = (client, message, args, embed, thumbImg, reactions, embedColors) =
           embed.setTitle('Retrieval Error')
           embed.setDescription('The specified CaseID does not pertain to this server.')
           embed.setColor(embedColors.error)
-          embed.setFooter(`${message.author.username + '#' + message.author.discriminator} | ❤ JunoDevs`)
+          embed.setFooter(config.footer(message))
           embed.setTimestamp(new Date())
           embed.setThumbnail(thumbImg)
 
@@ -95,7 +93,7 @@ exports.run = (client, message, args, embed, thumbImg, reactions, embedColors) =
     embed.setTitle('Command Error')
     embed.setDescription('You must provide 2 arguments.')
     embed.setColor(embedColors.error)
-    embed.setFooter(`${message.author.username + '#' + message.author.discriminator} | ❤ JunoDevs`)
+    embed.setFooter(config.footer(message))
     embed.setTimestamp(new Date())
     embed.setThumbnail(thumbImg)
     embed.addField('First Argument', 'Punishment Type (Ex. ban, kick, mute)')

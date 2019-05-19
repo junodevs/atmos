@@ -1,3 +1,5 @@
+const config = require('../../config')
+
 exports.run = (client, message, args, embed, thumbImg, reactions, embedColors) => {
   function convertMillisecondsToDigitalClock (ms) {
     var hours = Math.floor(ms / 3600000) // 1 Hour = 36000 Milliseconds
@@ -19,7 +21,7 @@ exports.run = (client, message, args, embed, thumbImg, reactions, embedColors) =
   embed.setTitle('Atmos Uptime')
   embed.setDescription('Atmos has been online for:' + convertMillisecondsToDigitalClock(client.uptime))
   embed.setColor(embedColors.default)
-  embed.setFooter(`${message.author.username + '#' + message.author.discriminator} | ❤ JunoDevs`)
+  embed.setFooter(config.footer(message))
   embed.setTimestamp(new Date())
   embed.setThumbnail(thumbImg)
 

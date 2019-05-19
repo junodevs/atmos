@@ -1,3 +1,5 @@
+const config = require('../../config')
+
 exports.run = (client, message, args, embed, thumbImg, reactions, embedColors) => {
   var afk
   if (message.channel.guild.afkChannel == null) {
@@ -9,7 +11,7 @@ exports.run = (client, message, args, embed, thumbImg, reactions, embedColors) =
   embed.setTitle(message.guild.name)
   embed.setDescription('Server Information')
   embed.setColor(embedColors.default)
-  embed.setFooter(`${message.author.username + '#' + message.author.discriminator} | ❤ JunoDevs`)
+  embed.setFooter(config.footer(message))
   embed.setTimestamp(new Date())
   embed.setThumbnail(message.guild.iconURL)
   // Start Information
