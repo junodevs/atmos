@@ -26,7 +26,7 @@ exports.run = (client, message, args, embed, thumbImg, reactions, embedColors) =
           embed.setTitle('Command Error')
           embed.setDescription('The first argument must be the mention of the user you wish to mute!')
           embed.setColor(embedColors.error)
-          embed.setFooter(`${message.author.username + '#' + message.author.discriminator} | ❤ JunoDevs`)
+          embed.setFooter(config.footer(message))
           embed.setTimestamp(new Date())
           embed.setThumbnail(thumbImg)
 
@@ -43,7 +43,7 @@ exports.run = (client, message, args, embed, thumbImg, reactions, embedColors) =
             embed.setTitle(`You have been muted in "**${message.guild.name}**"`)
             embed.setDescription(`Reason: **${reason}**`)
             embed.setColor(embedColors.error)
-            embed.setFooter(`${message.author.username + '#' + message.author.discriminator} | ❤ JunoDevs`)
+            embed.setFooter(config.footer(message))
             embed.setTimestamp(new Date())
             embed.setThumbnail(thumbImg)
 
@@ -60,7 +60,7 @@ exports.run = (client, message, args, embed, thumbImg, reactions, embedColors) =
 
             embed.setTitle(`User Successfully Muted`)
             embed.setColor(embedColors.success)
-            embed.setFooter(`${message.author.username + '#' + message.author.discriminator} | ❤ JunoDevs`)
+            embed.setFooter(config.footer(message))
             embed.setTimestamp(new Date())
             embed.setThumbnail(thumbImg)
 
@@ -72,7 +72,7 @@ exports.run = (client, message, args, embed, thumbImg, reactions, embedColors) =
           embed.setTitle('Muting Error')
           embed.setDescription('The specified user is not muteable by the bot.')
           embed.setColor(embedColors.error)
-          embed.setFooter(`${message.author.username + '#' + message.author.discriminator} | ❤ JunoDevs`)
+          embed.setFooter(config.footer(message))
           embed.setTimestamp(new Date())
           embed.setThumbnail(thumbImg)
           embed.addField(`Try hoisting the Atmos role above ${user.username}'s role!`, 'This error may also occur if the mentioned user is the server owner.')
@@ -85,7 +85,7 @@ exports.run = (client, message, args, embed, thumbImg, reactions, embedColors) =
         embed.setTitle('Command Error')
         embed.setDescription('You must provide a user to mute. (And optionally a reason)')
         embed.setColor(embedColors.error)
-        embed.setFooter(`${message.author.username + '#' + message.author.discriminator} | ❤ JunoDevs`)
+        embed.setFooter(config.footer(message))
         embed.setTimestamp(new Date())
         embed.setThumbnail(thumbImg)
 
@@ -97,7 +97,7 @@ exports.run = (client, message, args, embed, thumbImg, reactions, embedColors) =
       embed.setTitle('Permission Error')
       embed.setDescription('The bot requires the "MANAGE_MESSAGES" permission to mute members!')
       embed.setColor(embedColors.error)
-      embed.setFooter(`${message.author.username + '#' + message.author.discriminator} | ❤ JunoDevs`)
+      embed.setFooter(config.footer(message))
       embed.setTimestamp(new Date())
       embed.setThumbnail(thumbImg)
 
@@ -109,7 +109,7 @@ exports.run = (client, message, args, embed, thumbImg, reactions, embedColors) =
     embed.setTitle("You don't have permission to perform this action.")
     embed.setDescription('You require the "MANAGE_MESSAGES" permission to use this command!')
     embed.setColor(embedColors.error)
-    embed.setFooter(`${message.author.username + '#' + message.author.discriminator} | ❤ JunoDevs`)
+    embed.setFooter(config.footer(message))
     embed.setTimestamp(new Date())
     embed.setThumbnail(thumbImg)
 

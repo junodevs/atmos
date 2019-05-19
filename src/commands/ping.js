@@ -1,7 +1,9 @@
+const config = require('../../config')
+
 exports.run = (client, message, args, embed, thumbImg, reactions, embedColors) => {
   embed.setTitle('Grabbing the paddle...')
   embed.setColor(embedColors.default)
-  embed.setFooter(`${message.author.username + '#' + message.author.discriminator} | ❤ JunoDevs`)
+  embed.setFooter(config.footer(message))
   embed.setTimestamp(new Date())
   embed.setThumbnail(thumbImg)
 

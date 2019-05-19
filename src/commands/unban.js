@@ -1,3 +1,5 @@
+const config = require('../../config')
+
 exports.run = (client, message, args, embed, thumbImg, reactions, embedColors) => {
   // ARG 1: User being unbanned
   message.channel.startTyping()
@@ -19,7 +21,7 @@ exports.run = (client, message, args, embed, thumbImg, reactions, embedColors) =
           embed.setTitle('Command Error')
           embed.setDescription('The first argument must be the mention of the user you wish to unban!')
           embed.setColor(embedColors.error)
-          embed.setFooter(`${message.author.username + '#' + message.author.discriminator} | ❤ JunoDevs`)
+          embed.setFooter(config.footer(message))
           embed.setTimestamp(new Date())
           embed.setThumbnail(thumbImg)
 
@@ -33,7 +35,7 @@ exports.run = (client, message, args, embed, thumbImg, reactions, embedColors) =
         embed.setTitle(`User Successfully Unbanned`)
         embed.setDescription('You can still access the original case using the case command!')
         embed.setColor(embedColors.success)
-        embed.setFooter(`${message.author.username + '#' + message.author.discriminator} | ❤ JunoDevs`)
+        embed.setFooter(config.footer(message))
         embed.setTimestamp(new Date())
         embed.setThumbnail(thumbImg)
 
@@ -44,7 +46,7 @@ exports.run = (client, message, args, embed, thumbImg, reactions, embedColors) =
         embed.setTitle('Command Error')
         embed.setDescription('You must provide a user to unban.')
         embed.setColor(embedColors.error)
-        embed.setFooter(`${message.author.username + '#' + message.author.discriminator} | ❤ JunoDevs`)
+        embed.setFooter(config.footer(message))
         embed.setTimestamp(new Date())
         embed.setThumbnail(thumbImg)
 
@@ -56,7 +58,7 @@ exports.run = (client, message, args, embed, thumbImg, reactions, embedColors) =
       embed.setTitle('Permission Error')
       embed.setDescription('The bot requires the "BAN_MEMBERS" permission to unban members!')
       embed.setColor(embedColors.error)
-      embed.setFooter(`${message.author.username + '#' + message.author.discriminator} | ❤ JunoDevs`)
+      embed.setFooter(config.footer(message))
       embed.setTimestamp(new Date())
       embed.setThumbnail(thumbImg)
 
@@ -68,7 +70,7 @@ exports.run = (client, message, args, embed, thumbImg, reactions, embedColors) =
     embed.setTitle("You don't have permission to perform this action.")
     embed.setDescription('You require the "BAN_MEMBERS" permission to use this command!')
     embed.setColor(embedColors.error)
-    embed.setFooter(`${message.author.username + '#' + message.author.discriminator} | ❤ JunoDevs`)
+    embed.setFooter(config.footer(message))
     embed.setTimestamp(new Date())
     embed.setThumbnail(thumbImg)
 
