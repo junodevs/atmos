@@ -26,8 +26,8 @@
     "date-fns": "^1.30.1",
     "discord.js": "^11.4.2",
     "enmap": "^4.8.2",
-    "overwatch-api": "^0.7.5",
-    "mysql": "^2.17.1"
+    "mysql": "^2.17.1",
+    "overwatch-api": "^0.7.5"
   },
-    "chalk": "^2.4.2"
+  "chalk": "^2.4.2"
 }
