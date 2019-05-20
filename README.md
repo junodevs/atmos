@@ -33,3 +33,4 @@ A WIP multi-purpose discord bot written in Javascript by the Juno development te
 * [`Luke#1000`](https://lukewhrit.xyz)
 * [`BluLightShow#0001`](https://blulightshow.space)
 * [`AmusedGrape#0001`](https://github.com/jackmerrill)
+
