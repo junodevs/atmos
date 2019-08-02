@@ -1,4 +1,4 @@
-const bot = require('../bot.js')
+const bot = require('../atmos.js')
 
 const dbPromise = (sql) => {
   return new Promise((resolve, reject) => {

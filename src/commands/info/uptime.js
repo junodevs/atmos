@@ -1,4 +1,4 @@
-const config = require('../../config')
+const config = require('../../../config')
 
 exports.run = (client, message, args, embed, thumbImg, reactions, embedColors) => {
   function convertMillisecondsToDigitalClock (ms) {

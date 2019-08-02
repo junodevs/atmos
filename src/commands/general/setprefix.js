@@ -1,7 +1,7 @@
-const cache = require('../utils/cache.js')
-const { dbPromise } = require('../utils/database.js')
-const bot = require('../bot.js')
-const config = require('../../config')
+const cache = require('../../utils/cache.js')
+const { dbPromise } = require('../../utils/database.js')
+const bot = require('../../bot.js')
+const config = require('../../../config')
 
 exports.run = (client, message, args, embed, thumbImg, reactions, embedColors) => {
   message.channel.startTyping()

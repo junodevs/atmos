@@ -1,5 +1,5 @@
-var { dbPromise } = require('../utils/database.js')
-const config = require('../../config')
+var { dbPromise } = require('../../../utils/database.js')
+const config = require('../../../../config')
 const date = require('date-fns')
 exports.run = (client, message, args, embed, thumbImg, reactions, embedColors) => {
   // ARG 1: Punishment type
