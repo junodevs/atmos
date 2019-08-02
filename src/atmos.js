@@ -83,5 +83,10 @@ client.login(process.env.TESTER_TOKEN)
   .then(() => {
     log('Success! Logged in and ready via tester token', 'ready')
   }).catch(err => {
-    log(err, 'error')
+    // throw new Error(log(err, 'error'))
+    throw new Error(err)
   })
+
+process.on('unhandledRejection', err => {
+  console.error(`unhandled rejection ${err}`)
+})

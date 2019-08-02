@@ -16,6 +16,7 @@
     "no-unused-vars": "warn",
     "no-fallthrough": "off",
     "no-unused-expressions": "off",
-    "no-sequences": "off"
+    "no-sequences": "off",
+    "array-bracket-spacing": "off"
   }
 }
