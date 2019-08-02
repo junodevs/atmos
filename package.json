@@ -2,9 +2,9 @@
   "name": "atmos-bot",
   "version": "0.0.2",
   "description": "A multi-purpose discord bot written in JavaScript by Juno",
-  "main": "src/atmos.js",
+  "main": "src/bot.js",
   "scripts": {
-    "start": "nodemon --exec \"npm run lint && node -r esm src/atmos.js\" .",
+    "start": "nodemon --exec \"npm run lint && node -r esm src/bot.js\" .",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
   },
