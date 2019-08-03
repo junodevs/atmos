@@ -10,7 +10,7 @@ require('dotenv').config()
 const client = new AkairoClient({
   ownerID: config.admins,
   prefix: 'a.',
-  extensions: [ '.js', '.ts', '.mjs' ],
+  extensions: ['.js', '.ts', '.mjs'],
   clientUtil: true,
   handleEdits: true,
   defaultCooldown: 2000,
