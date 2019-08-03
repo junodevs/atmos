@@ -1,5 +1,5 @@
-module.exports = {
-  version: require('./package.json').version,
+export default {
+  version: '2',
   admins: [
     '189850839660101632',
     '200616508328509442',

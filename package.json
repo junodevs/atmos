@@ -4,8 +4,8 @@
   "description": "A multi-purpose discord bot written in JavaScript by Juno",
   "main": "src/bot.js",
   "scripts": {
-    "start": "nodemon --exec \"npm run lint && node -r esm src/bot.js\" .",
-    "lint": "eslint .",
+    "start": "nodemon --exec \"npm run lint && node --experimental-modules src/bot.mjs\" .",
+    "lint": "eslint ./**/**.mjs",
     "lint:fix": "eslint . --fix"
   },
   "repository": {
@@ -31,7 +31,6 @@
     "discord.js": "^11.4.2",
     "dotenv": "^8.0.0",
     "enmap": "^5.0.1",
-    "esm": "^3.2.25",
     "mysql": "^2.17.1",
     "overwatch-api": "^0.7.5"
   }

@@ -1,5 +1,5 @@
 import { Listener } from 'discord-akairo'
-import config from '../../config'
+import config from '../../config.mjs'
 import { log } from '../utils/logger'
 
 class ReadyListener extends Listener {
