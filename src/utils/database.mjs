@@ -11,16 +11,14 @@ if (process.env.TESTER_ENV) {
   log('Production environment detected...connecting to production database account for security...', 'warn')
 }
 
-// export const db = mysql.createPool({ // IP needs to be whitelisted to connect as a security measure
-//   connectionLimit: 3,
-//   host: '176.31.10.37',
-//   port: 3306,
-//   user: dbuser,
-//   password: process.env.DB_PASS,
-//   database: 'envision_atmos_main'
-// })
-
-export const db = null
+export const db = mysql.createPool({ // IP needs to be whitelisted to connect as a security measure
+  connectionLimit: 3,
+  host: '176.31.10.37',
+  port: 3306,
+  user: dbuser,
+  password: process.env.DB_PASS,
+  database: 'envision_atmos_main'
+})
 
 // Query => Promise, we've gone full synchronous
 export function dbPromise (sql) {
