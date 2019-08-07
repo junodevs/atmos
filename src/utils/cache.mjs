@@ -12,7 +12,12 @@ function getPrefixCache (key) {
   return prefixCache[key]
 }
 
-module.exports = {
-  setPrefixCache: setPrefixCache,
+export default {
+  setPrefixCache,
+  getPrefixCache
+}
+
+export {
+  setPrefixCache,
   getPrefixCache
 }

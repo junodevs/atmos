@@ -1,7 +1,7 @@
 // Basic blacklisted users inhibitor
 
 import { Inhibitor } from 'discord-akairo'
-import { blacklist } from '../../config'
+import { blacklist } from '../../config.mjs'
 
 class BlacklistInhibitor extends Inhibitor {
   constructor () {

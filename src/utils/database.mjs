@@ -1,5 +1,5 @@
 import mysql from 'mysql'
-import { log } from './logger'
+import { log } from './logger.mjs'
 
 var dbuser
 
