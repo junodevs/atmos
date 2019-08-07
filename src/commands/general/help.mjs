@@ -1,0 +1,32 @@
+// const cache = require('../../utils/cache.js')
+// const bot = require('../../bot.js')
+// const config = require('../../../config')
+
+// exports.run = (client, message, args, embed, thumbImg, reactions, embedColors) => {
+//   message.channel.startTyping()
+//   var prefix = 'No custom prefix'
+//   if (cache.getPrefixCache(message.guild.id)) prefix = cache.getPrefixCache(message.guild.id)
+//   embed.setTitle('Commands List')
+//   embed.setDescription('For more info, check https://atmosbot.com')
+//   embed.setColor(embedColors.default)
+//   embed.setThumbnail(thumbImg)
+//   embed.setFooter(config.footer(message))
+//   embed.setTimestamp(new Date())
+//   embed.addField(`All commands can use custom prefix (**${prefix}**) or the default prefix (**${bot.config.prefix}**)`, 'Not all existing commands shown! Please be patient, Atmos is currently in a pre-release stage!')
+//   embed.addField(`${prefix}help`, 'This page', false)
+//   embed.addField(`${prefix}setprefix`, 'Sets custom prefix', false)
+//   embed.addField(`${prefix}getprefix`, 'View your custom prefix', false)
+//   embed.addField(`${prefix}kick`, 'Kick someone from a guild', false)
+//   embed.addField(`${prefix}ban`, 'Ban someone from a guild', false)
+//   embed.addField(`${prefix}unban`, 'Unban someone from a guild', false)
+//   embed.addField(`${prefix}ow`, 'Retrieve overwatch statistics on a specific player, platform, and region', false)
+//   embed.addField(`${prefix}case`, 'Retrieve the information on a punishment case in your server', false)
+//   embed.addField(`${prefix}uptime`, 'Retrieve the bot uptime', false)
+//   embed.addField(`${prefix}ping`, 'Pong', false)
+//   embed.addField(`${prefix}whois`, 'Wait a minute? Who *are* you?', false)
+//   embed.addField(`${prefix}uptime`, 'Gets you some spicy server information', false)
+//   message.channel.send(embed)
+
+//   message.react(reactions.success)
+//   message.channel.stopTyping(true)
+// }
