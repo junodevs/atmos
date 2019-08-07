@@ -1,11 +1,10 @@
-export default {
-  version: '2',
+module.exports = {
   admins: [
-    '189850839660101632',
-    '200616508328509442',
-    '306503388500066306',
-    '401792058970603539',
-    '251788826232619008'
+    189850839660101632,
+    200616508328509442,
+    306503388500066306,
+    401792058970603539,
+    251788826232619008
   ],
   prefix: 'a.',
   reactions: {
@@ -23,6 +22,5 @@ export default {
   footer: (msg) => {
     return `${msg.author.username + '#' + msg.author.discriminator} | ❤ JunoDevs`
   },
-  blacklist: [],
-  thumbImg: 'https://atmosbot.com/img/Atmos.png' // TODO: Move this to more reliable spot so if my hosting cuts the thumb is still there
+  thumbImg: 'https://atmosbot.com/img/Atmos.png'
 }

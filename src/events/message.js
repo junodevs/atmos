@@ -1,7 +1,7 @@
-const bot = require('../client.js/index.js')
+const bot = require('../bot.js')
 const cache = require('../utils/cache.js')
 const { dbPromise } = require('../utils/database.js')
-const config = require('../../config.mjs')
+const config = require('../../config')
 
 module.exports = (client, message) => {
   if (message.author.bot) return

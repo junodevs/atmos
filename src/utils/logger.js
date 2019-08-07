@@ -1,30 +1,28 @@
-import chalk from 'chalk'
+const chalk = require('chalk')
 
-const log = (content, type = 'info') => {
+exports.log = (content, type = 'info') => {
   switch (type) {
-    case 'info':
+    case 'info': {
       return console.log(`[ ${chalk.blue(type.toLowerCase())} ] ${content} `)
-
-    case 'warn':
+    }
+    case 'warn': {
       return console.log(`[ ${chalk.yellow(type.toLowerCase())} ] ${content} `)
-
-    case 'error':
+    }
+    case 'error': {
       return console.log(`[ ${chalk.red(type.toLowerCase())} ] ${content} `)
-
-    case 'cmd':
+    }
+    case 'cmd': {
       return console.log(`[ ${chalk.green(type.toLowerCase())} ] ${content} `)
-
-    case 'wait':
+    }
+    case 'wait': {
       return console.log(`[ ${chalk.blue(type.toLowerCase())} ] ${content} `)
-
-    case 'event':
+    }
+    case 'event': {
       return console.log(`[ ${chalk.magenta(type.toLowerCase())} ] ${content}`)
-
-    case 'ready':
+    }
+    case 'ready': {
       return console.log(`[ ${chalk.green(type.toLowerCase())} ] ${content}`)
-
+    }
     default: throw new TypeError(`logger type must be either info, warn, error, wait, event or ready.`)
   }
 }
-
-export { log }
