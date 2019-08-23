@@ -23,6 +23,6 @@ exports.log = (content, type = 'info') => {
     case 'ready': {
       return console.log(`[ ${chalk.green(type.toLowerCase())} ] ${content}`)
     }
-    default: throw new TypeError(`logger type must be either info, warn, error, wait, event or ready.`)
+    default: throw new TypeError('logger type must be either info, warn, error, wait, event or ready.')
   }
 }

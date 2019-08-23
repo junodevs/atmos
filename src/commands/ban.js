@@ -64,7 +64,7 @@ exports.run = (client, message, args, embed, thumbImg, reactions, embedColors) =
               })
 
               // REPLY IN CHAT
-              embed.setTitle(`User Successfully Banned`)
+              embed.setTitle('User Successfully Banned')
               embed.setColor(embedColors.success)
               embed.setFooter(config.footer(message))
               embed.setTimestamp(new Date())

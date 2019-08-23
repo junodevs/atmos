@@ -64,7 +64,7 @@ exports.run = (client, message, args, embed, thumbImg, reactions, embedColors) =
               member.kick(reason)
 
               // REPLY IN CHAT
-              embed.setTitle(`User Successfully Kicked`)
+              embed.setTitle('User Successfully Kicked')
               embed.setColor(embedColors.success)
               embed.setFooter(config.footer(message))
               embed.setTimestamp(new Date())

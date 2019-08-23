@@ -22,7 +22,7 @@ module.exports = (client, message) => {
         commandRun()
       } else {
         var prefixObject = result[0]
-        var prefixResult = prefixObject['Prefix']
+        var prefixResult = prefixObject.Prefix
 
         cache.setPrefixCache(message.guild.id, prefixResult)
         prefix = cache.getPrefixCache(message.guild.id)
@@ -32,7 +32,7 @@ module.exports = (client, message) => {
       if (!bot.dbErrorThrown) {
         bot.client.user.setPresence({
           game: {
-            name: `DB Error! | We're already on it!`
+            name: 'DB Error! | We\'re already on it!'
           },
           status: 'dnd'
         })
@@ -40,7 +40,7 @@ module.exports = (client, message) => {
         embed.setTitle('Command Run Error')
         embed.setDescription('There was an error in the command run process.')
         embed.setColor(bot.config.colors.error)
-        embed.setFooter(`Chief we've got a problem`)
+        embed.setFooter('Chief we\'ve got a problem')
         embed.setTimestamp(new Date())
         embed.setThumbnail(bot.config.thumbImg)
         // ERROR: Notifies Devs for fixing

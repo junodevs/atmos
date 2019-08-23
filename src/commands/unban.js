@@ -32,7 +32,7 @@ exports.run = (client, message, args, embed, thumbImg, reactions, embedColors) =
 
         message.guild.unban(user)
 
-        embed.setTitle(`User Successfully Unbanned`)
+        embed.setTitle('User Successfully Unbanned')
         embed.setDescription('You can still access the original case using the case command!')
         embed.setColor(embedColors.success)
         embed.setFooter(config.footer(message))
