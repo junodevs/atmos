@@ -10,21 +10,21 @@ class PingCommand extends Command {
     })
   }
 
-  async exec (message) {
+  exec (message) {
+    console.log('Pong lmao')
     const embed = this.client.util.embed()
-
     embed.setTitle('Grabbing the paddle ...')
     embed.setColor(embedColors.default)
     embed.setFooter(footer(message))
     embed.setTimestamp(new Date())
     embed.setThumbnail(thumbImg)
 
-    message.channel.send({ embed }).then(m => {
+    message.channel.send(embed).then(m => {
       embed.setTitle(`🏓 *Pong!! Latency is ${m.createdTimestamp - message.createdTimestamp}ms. API Latency is ${Math.round(this.client.ping)}ms!*`)
-      m.edit({ embed })
+      m.edit(embed)
       message.react(reactions.success)
     })
   }
 }
 
-export default PingCommand
+module.exports = PingCommand
