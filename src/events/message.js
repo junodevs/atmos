@@ -5,7 +5,7 @@ const config = require('../../config')
 
 module.exports = (client, message) => {
   if (message.author.bot) return
-  const embed = new bot.Discord.RichEmbed()
+  const embed = new bot.Discord.MessageEmbed()
 
   if (message.channel.type === 'dm') {
     // TODO: MODMAIL
