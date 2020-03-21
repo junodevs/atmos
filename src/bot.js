@@ -59,7 +59,7 @@ log('Command loading complete!', 'info')
 client.on('ready', () => {
   log('Connected to Discord', 'ready')
   client.user.setPresence({
-    game: {
+    activity: {
       name: `for ${config.prefix}help | PRE ${version}`,
       type: 'WATCHING'
     },
