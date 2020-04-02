@@ -1,6 +1,6 @@
 # Atmos
 
-
+[![Known Vulnerabilities](https://snyk.io/test/github/junodevs/atmos/badge.svg?targetFile=package.json)](https://snyk.io/test/github/junodevs/atmos?targetFile=package.json)
 [![License](https://img.shields.io/github/license/junodevs/atmos.svg)](LICENSE)
 [![Discord](https://img.shields.io/discord/562437899707219978.svg?color=%237289DA&logo=join)](https://discord.gg/53jCeTX)
 [![Travis CI](https://api.travis-ci.org/junodevs/atmos.svg?branch=master)](https://travis-ci.org/junodevs/atmos)
