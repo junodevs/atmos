@@ -23,11 +23,10 @@
     "standard": "^14.0.0"
   },
   "dependencies": {
+    "chalk": "^4.0.0",
     "date-fns": "^2.11.1",
     "discord.js": "^12.1.1",
     "enmap": "^5.2.4",
-    "mysql": "^2.18.1",
-    "overwatch-api": "^0.8.2",
-    "chalk": "^4.0.0"
+    "mysql": "^2.18.1"
   }
 }
