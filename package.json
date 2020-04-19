@@ -1,30 +1,42 @@
 {
   "name": "atmos-bot",
-  "version": "0.0.2",
+  "version": "1.0.0",
   "description": "A multi-purpose discord bot written in JavaScript by Juno",
   "main": "src/bot.js",
   "scripts": {
-    "start": "standard && nodemon .",
-    "test": "standard && node src/bot.js",
-    "lint": "standard --fix"
+    "start": "node src/Client.js",
+    "watch": "nodemon src/Client.js",
+    "lint": "eslint src/**"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/junodevs/atmos.git"
   },
-  "author": "Juno <https://lukewhrit.xyz> (Luke#1000 <https://lukewhrit.xyz>, BluLightShow#0001 <https://blulightshow.space>, AmusedGrape#0001 <https://jackmerrill.com>)",
+  "author": "Juno Development Group",
+  "contributors": [
+    { "name": "Luke Whrit", "email": "me@lukewhrit.xyz", "url": "https://lukewhrit.xyz" },
+    { "name": "BluLightShow", "email": "maxwell.bromberg@gmail.com", "url": "https://blulightshow.space" },
+    { "name": "AmusedGrape", "url": "https://amusedgrape.xyz/" }
+  ],
   "license": "AGPL-3.0-or-later",
   "bugs": {
     "url": "https://github.com/junodevs/atmos/issues"
   },
   "homepage": "https://atmosbot.com",
   "devDependencies": {
-    "nodemon": "^2.0.0",
-    "standard": "^14.0.0"
+    "eslint": "^6.8.0",
+    "eslint-config-standard": "^14.1.1",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "nodemon": "^2.0.0"
   },
   "dependencies": {
     "chalk": "^4.0.0",
+    "consola": "^2.11.3",
     "date-fns": "^2.11.1",
+    "discord-akairo": "^8.0.0",
     "discord.js": "11.6.4",
     "enmap": "^5.2.4",
     "mysql": "^2.18.1"

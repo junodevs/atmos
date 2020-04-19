@@ -1,3 +1,7 @@
+src/deprecated
+
+secrets.js
+
 # Logs
 logs
 *.log

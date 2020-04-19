@@ -1,26 +1,27 @@
 module.exports = {
-  admins: [
-    189850839660101632,
-    200616508328509442,
-    306503388500066306,
-    401792058970603539,
-    251788826232619008
-  ],
-  prefix: 'a.',
-  reactions: {
-    success: '✅',
-    error: '❌',
-    warning: '⚠️'
+  atmosOptions: {
+    prefix: 'a.',
+    reactions: {
+      success: '✅',
+      error: '❌',
+      warning: '⚠️'
+    },
+    embedColors: {
+      default: '#686de0',
+      error: '#ff4642',
+      warning: '#ffd139',
+      success: '#26cb7c'
+    },
+    embedFooter: (msg) => `${msg.author.username + '#' + msg.author.discriminator} | ❤ JunoDevs`
   },
-  colors: {
-    default: '#686de0',
-    error: '#ff4642',
-    warning: '#ffd139',
-    success: '#26cb7c'
+  akairoOptions: {
+    ownerID: [
+      '200616508328509442', // BluLightShow#0001
+      '189850839660101632', // Luke#1000
+      '401792058970603539'  // AmusedGrape#1000
+    ]
   },
-  // footer: `Author#0000 | ❤ JunoDevs`,
-  footer: (msg) => {
-    return `${msg.author.username + '#' + msg.author.discriminator} | ❤ JunoDevs`
-  },
-  thumbImg: 'https://atmosbot.com/img/Atmos.png'
+  discordOptions: {
+    disableEveryone: true
+  }
 }
