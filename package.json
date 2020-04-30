@@ -6,7 +6,9 @@
   "scripts": {
     "start": "standard && nodemon .",
     "test": "standard && node src/bot.js",
-    "lint": "standard --fix"
+    "lint": "standard --fix",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "repository": {
     "type": "git",
@@ -27,6 +29,8 @@
     "date-fns": "^2.12.0",
     "discord.js": "11.6.4",
     "enmap": "^5.2.4",
-    "mysql": "^2.18.1"
-  }
+    "mysql": "^2.18.1",
+    "snyk": "^1.316.1"
+  },
+  "snyk": true
 }
