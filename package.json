@@ -19,7 +19,7 @@
   },
   "homepage": "https://atmosbot.com",
   "devDependencies": {
-    "nodemon": "^2.0.0",
+    "nodemon": "^2.0.4",
     "standard": "^14.3.4"
   },
   "dependencies": {
