@@ -1,4 +1,5 @@
-# Atmos
+# Atmos (DEPRECATED, USE A REAL DISCORD BOT)
+> **While we'd like to believe what we created here was useful at the time, it was more for learning purposes than public usability. If you need a real self-hosted discord bot, I strongly suggest looking elsewhere. No support will be provided for this bot.**
 
 [![Known Vulnerabilities](https://snyk.io/test/github/junodevs/atmos/badge.svg?targetFile=package.json)](https://snyk.io/test/github/junodevs/atmos?targetFile=package.json)
 [![License](https://img.shields.io/github/license/junodevs/atmos.svg)](LICENSE)
